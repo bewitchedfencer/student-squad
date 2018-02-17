@@ -1,0 +1,49 @@
+{
+  "name": "student-squad",
+  "version": "1.0.0",
+  "description": "A website for tutors, teachers and parents to communicate for better student success",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bewitchedfencer/student-squad.git"
+  },
+  "keywords": [
+    "tutor",
+    "teacher",
+    "student",
+    "node.js",
+    "mvc",
+    "academic",
+    "support",
+    "handlebars",
+    "sequelize",
+    "mocha",
+    "chai",
+    "mysql2",
+    "body",
+    "parser",
+    "express"
+  ],
+  "author": "Alexa Robinson, Lisa Vinson, Jeff Nabors, and Eddie Mendez-Soto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bewitchedfencer/student-squad/issues"
+  },
+  "homepage": "https://github.com/bewitchedfencer/student-squad#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "handlebars": "^4.0.11",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.2",
+    "sequelize": "^4.33.4"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.0.1"
+  }
+}
