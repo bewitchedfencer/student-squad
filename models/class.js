@@ -21,5 +21,9 @@ module.exports = function(sequelize, DataTypes) {
     //Associate classes with teacher (1 teacher per class)
     Class.associate = function(models) {
         Class.belongsTo(models.Teacher)
-    }
+    };
+    Class.belongsToMany(models.Students, {
+        through:models.Roster,
+        unique:false
+    });
 }
