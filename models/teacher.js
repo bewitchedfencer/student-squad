@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-    var Class = sequelize.define("Class", {
-        name: {
+    var Teacher = sequelize.define("Teacher", {
+        firstName: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
             }
 
         },
-        subject: {
+        lastName: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
@@ -18,8 +18,11 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
-    //Associate classes with teacher (1 teacher per class)
-    Class.associate = function(models) {
-        Class.belongsTo(models.Teacher)
+    //Associate teacher with classes
+    Teacher.associate = function(models) {
+        //many classes to one teacher
+        //If a teacher is deleted, keep the class - 
+
+        Teacher.hasMany(models.Class)
     }
 }
