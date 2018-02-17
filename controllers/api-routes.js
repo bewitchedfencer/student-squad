@@ -1,18 +1,18 @@
 
-//Tutor Landing Page
+//TUTOR HOME PAGE
 
-//PATCH: Add a student - Updates the "tutor-id" column in the student's row to show it corresponds to the tutor that added him/her
-    //1 to many relationship
-    //will add updated student using handlebars partial
+    //PATCH: Add a student - Updates the "tutor-id" column in the student's row to show it corresponds to the tutor that added him/her
+        //1 to many relationship
+        //will add updated student using handlebars partial
 
-//Google Calendar API - Client Side Only
+    //Google Calendar API - Client Side Only
 
-//GET: View the student profile that was clicked - will send student data to handlebars page
+    //GET: View the student profile that was clicked - will send student data to handlebars page
 
-//GET: Go to Notes page: Get route using handlebars
+    //GET: Go to Notes page: Get route using handlebars
 
 
-//Student Profile (Tutor Login and Teacher Login)
+//STUDENT PROFILE (Tutor View and Teacher View)
     //GET - Most recent 5 tutor messages/notes from the messages table
 
     //GET - Most recent 5 teacher messages/notes from the messages table
