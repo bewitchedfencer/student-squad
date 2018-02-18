@@ -2,4 +2,3 @@
 
 CREATE DATABASE lovelace_db;
 
-USE lovelace_db;
