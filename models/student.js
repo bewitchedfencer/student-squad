@@ -23,12 +23,12 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-
-        Student.belongsToMany(models.Class, {
-            through:Roster,
-        });
-        Student.hasMany(models.Message);
+    // Student.associate = function(models) {        
+    //     Student.belongsToMany(models.Class, {
+    //        through:models.Roster
+    //     });
+    //     Student.hasMany(models.Message);
     
-
+    // };
     return Student;
 };

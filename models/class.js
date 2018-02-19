@@ -20,13 +20,13 @@ module.exports = function(sequelize, DataTypes) {
 
     //Associate classes with teacher (1 teacher per class)
 
-    Class.associate = function(models) {
-        Class.belongsTo(models.Teacher);
+    // Class.associate = function(models) {
+    //     Class.belongsTo(models.Teacher);
 
-        Class.belongsToMany(models.Student, {
-            through:Roster,
-        });
-    };
+    //     Class.belongsToMany(models.Student, {
+    //         through:models.Roster
+    //     });
+    // };
 
     return Class;
 
