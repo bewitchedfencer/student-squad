@@ -1,4 +1,42 @@
-var db = require("../models");
+var express = require("express");
+
+var router = express.Router();
+// edit burger model to match sequelize
+var db = require("../models/");
+
+//New Tutor:
+
+router.post("/newTutor", function(req, res) {
+
+    var tutor = req.body;
+
+    db.Tutor.create({
+        tutor_first_name: tutor.firstName,
+        tutor_last_name: tutor.lastName,
+        tutor_agency: tutor.agency,
+        email: tutor.email,
+        password: tutor.password
+    }).then(function(newUser) {
+        console.log("New tutor signed up!")
+    })
+
+});
+
+router.get("/tutorLogin", function(req, res) {
+
+    db.Tutor.findOne({
+        where: {email: req.body.email}
+    }).then(
+        function(tutor) {
+            if (tutor.password === req.body.password) {
+                console.log("successfully authenticated")
+            }
+            else {
+                console.log("No tutors matching those credentials")
+            }
+        }
+    )
+})
 
 //TUTOR HOME PAGE
 
@@ -69,7 +107,7 @@ var assignTutor = function (req, res) {
 
 //Get: list of students in each class - when user clicks on class, generate dropdown with list
 
-var tutorRoute = {
+var tutorRoutes = {
     displayStudents, assignTutor
 };
 

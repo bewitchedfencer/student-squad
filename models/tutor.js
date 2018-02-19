@@ -16,6 +16,16 @@ module.exports = function (sequelize, DataTypes) {
         },
         tutor_agency: {
             type: DataTypes.STRING
+        }, 
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isEmail: true,
+            }
+        },
+        password: {
+            type: DataTypes.STRING
         }
     });
 

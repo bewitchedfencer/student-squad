@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Teacher = sequelize.define("Teacher", {
+    var Teacher = sequelize.define("teacher", {
         first_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -21,6 +21,10 @@ module.exports = function(sequelize, DataTypes) {
             validate: {
                 isEmail: true,
             }
+        },
+        password: {
+            type: DataTypes.STRING,
+            allowNull:false
         }
 
     });
