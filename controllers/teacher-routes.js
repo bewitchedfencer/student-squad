@@ -1,4 +1,3 @@
-
 //TUTOR HOME PAGE
 
     //PATCH: Add a student - Updates the "tutor-id" column in the student's row to show it corresponds to the tutor that added him/her
@@ -39,5 +38,3 @@
         //GET: Get list of classses 
 
         //Get: list of students in each class - when user clicks on class, generate dropdown with list
-
-        
