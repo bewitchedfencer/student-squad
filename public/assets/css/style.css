@@ -1,0 +1,31 @@
+/* Login Page CSS */
+
+body {
+    position: relative;
+    /* width: 1440px;
+    height: 1024px; */
+    background: #FFFFFF;
+}
+
+#splashimg {
+    position: absolute;
+left: 0%;
+right: 0%;
+top: 14.65%;
+bottom: 12.11%;
+
+background: linear-gradient(180deg, rgba(142, 68, 173, 0.79) 0%, rgba(142, 68, 173, 0.79) 11.05%, rgba(142, 68, 173, 0) 100%), url(open-book-library-education-read-159621.jpg);
+}
+
+.title{
+    text-align: center;
+}
+
+.about{
+    position: absolute;
+width: 1250px;
+height: 271px;
+left: 95px;
+top: 589px;
+
+}
