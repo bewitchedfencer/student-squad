@@ -24,11 +24,10 @@ module.exports = function (sequelize, DataTypes) {
     });
 
 
-        // Student.belongsToMany(models.Class, {
-        //     through: models.Roster,
-        //     unique: false
-        // });
-        // Student.hasMany(models.Message)
+        Student.belongsToMany(models.Class, {
+            through:Roster,
+        });
+        Student.hasMany(models.Message);
     
 
     return Student;
