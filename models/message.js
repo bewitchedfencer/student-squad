@@ -26,9 +26,6 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    // Message.belongsTo(models.Tutor);
-    // Message.belongsTo(models.Teacher);
-
     return Message;
 
 }
