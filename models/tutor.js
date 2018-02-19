@@ -21,6 +21,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Tutor.associate = function (models) {
         Tutor.hasMany(models.Student);
+        Tutor.hasMany(models.Message);
     };
 
     return Tutor;
