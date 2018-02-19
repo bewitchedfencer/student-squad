@@ -25,11 +25,10 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
-    //Associate teacher with classes
+    // Associate teacher with classes
     Teacher.associate = function(models) {
-        //many classes to one teacher
-        //If a teacher is deleted, keep the class - 
-
         Teacher.hasMany(models.Class)
     }
+
+    return Teacher;
 }
