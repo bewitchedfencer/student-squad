@@ -24,7 +24,6 @@ module.exports = function (sequelize, DataTypes) {
     });
 
 
-        // Student.belongsTo(models.Tutor);
         // Student.belongsToMany(models.Class, {
         //     through: models.Roster,
         //     unique: false
