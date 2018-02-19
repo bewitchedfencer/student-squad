@@ -26,10 +26,10 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     // Associate teacher with classes
-    Teacher.associate = function(models) {
-        Teacher.hasMany(models.Class);
-        Teacher.hasMany(models.Message);
-    }
+    // Teacher.associate = function(models) {
+    //     Teacher.hasMany(models.Class);
+    //     Teacher.hasMany(models.Message);
+    // }
 
     return Teacher;
 }
