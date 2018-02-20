@@ -19,8 +19,24 @@ var db = require("../models/");
     });
 
         //GET: Get list of classses 
+        router.get("/classes", function(req, res){
+            var teacher = $this.teacherId;
+            db.Class.findAll({where: {teacherId:teacher}}).then(function(results){
+                var hdbsObj = {
+                    classes:results
+                };
+                console.log(hdbsObj);
+                //update with correct handlebars page
+                res.render("index", hdbsObj)
+            });
+        });
 
         //Get: list of students in each class - when user clicks on class, generate dropdown with list
+        router.get("/:classId?/", function(req, res){
+            var classId = req.classId;
+            //not sure how to query this one to return the 
+            // db.Roster.findAll({attributes:[''], where:{classId=classId}})
+        });
 
         //STUDENT PROFILE (Tutor View and Teacher View)
     //GET - Most recent 5 tutor messages/notes from the messages table
