@@ -3,51 +3,21 @@ var router = express.Router();
 var db = require("../models/");
 var passport = require("passport");
 
-//New Tutor:
+//REGISTER NEW TUTOR
 
 //Request received to register a new tutor
-router.post("/newTutor", passport.authenticate('local-signup',  { successRedirect: '/dashboard',
-    failureRedirect: '/'}
-    ));
-    
-    // var tutor = req.body;
-    // //Parameter names based on object sent from frontend js
+router.post("/newTutor", passport.authenticate('local-signup', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/'
+}));
 
-    // //Check if this user already exists bu comparing email
-    // db.Tutor.findAll({
-    //     where: { email: tutor.email }
-    //  }).then(function() {
-
-    //  })
-    // db.Tutor.create({
-    //     tutor_first_name: tutor.firstName,
-    //     tutor_last_name: tutor.lastName,
-    //     tutor_agency: tutor.agency,
-    //     email: tutor.email,
-    //     password: tutor.password
-    // }).then(function(newUser) {
-    //     console.log("New tutor signed up!");
-    //     console.log(newUser);
-    // })
-
-// });
 
 //Authenticate tutor
-router.get("/tutorLogin", function(req, res) {
-
-    db.Tutor.findOne({
-        where: {email: req.body.email}
-    }).then(
-        function(tutor) {
-            if (tutor.password === req.body.password) {
-                console.log("successfully authenticated")
-            }
-            else {
-                console.log("No tutors matching those credentials")
-            }
-        }
-    )
-});
+router.get("/tutorLogin", passport.authenticate('local-signin', {
+    successRedirect: '/dashboard',
+    failureRedirect: '/'
+})
+);
 
 //TUTOR HOME PAGE
 
