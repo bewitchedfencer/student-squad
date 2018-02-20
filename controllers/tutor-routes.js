@@ -1,15 +1,22 @@
 var express = require("express");
-
 var router = express.Router();
-// edit burger model to match sequelize
 var db = require("../models/");
 
 //New Tutor:
 
+//Request received to register a new tutor
 router.post("/newTutor", function(req, res) {
 
+    
     var tutor = req.body;
+    //Parameter names based on object sent from frontend js
 
+    //Check if this user already exists bu comparing email
+    db.Tutor.findAll({
+        where: { email: tutor.email }
+     }).then(function() {
+
+     })
     db.Tutor.create({
         tutor_first_name: tutor.firstName,
         tutor_last_name: tutor.lastName,
@@ -17,11 +24,13 @@ router.post("/newTutor", function(req, res) {
         email: tutor.email,
         password: tutor.password
     }).then(function(newUser) {
-        console.log("New tutor signed up!")
+        console.log("New tutor signed up!");
+        console.log(newUser);
     })
 
 });
 
+//Authenticate tutor
 router.get("/tutorLogin", function(req, res) {
 
     db.Tutor.findOne({
@@ -36,27 +45,23 @@ router.get("/tutorLogin", function(req, res) {
             }
         }
     )
-})
+});
 
 //TUTOR HOME PAGE
 
 //GET ROUTE - Displays students assigned to logged in tutor on navigation bar
-
-// app.GET("/", function (req, res) {
-var displayStudents = function (req, res) {
-    db.Student.findAll({
-        where: {
-            tutor_id: req.body.userId //Determine how to store logged in tutor's id
-        }
-    }).then(function (students) {
-        res.json(students)
-    })
-};
+// router.get("/", function (req, res) {
+//     db.Student.findAll({
+//         where: {
+//             tutor_id: req.body.userId //Determine how to store logged in tutor's id
+//         }
+//     }).then(function (students) {
+//         res.json(students)
+//     })
+// });
 
 //PATCH ROUTES - Updates the tutor_id field for student with code entered
-
-// app.PATCH("/newStudent", function (req, res) {
-var assignTutor = function (req, res) {
+router.patch("/newStudent", function (req, res) {
     var studentCode = req.body.studentCode;
     studentCode = studentCode.toLowerCase.trim();
     var tutorCode = req.body.tutorCode; //determine how to save the id for this user
@@ -70,7 +75,7 @@ var assignTutor = function (req, res) {
     }).then(function () {
         res.json("/");
     });
-};
+});
 
 //Google Calendar API - Client Side Only
 
@@ -107,8 +112,5 @@ var assignTutor = function (req, res) {
 
 //Get: list of students in each class - when user clicks on class, generate dropdown with list
 
-var tutorRoutes = {
-    displayStudents, assignTutor
-};
 
-module.exports = tutorRoutes;
+module.exports = router;
