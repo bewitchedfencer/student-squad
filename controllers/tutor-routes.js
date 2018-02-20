@@ -1,34 +1,36 @@
 var express = require("express");
 var router = express.Router();
 var db = require("../models/");
+var passport = require("passport");
 
 //New Tutor:
 
 //Request received to register a new tutor
-router.post("/newTutor", function(req, res) {
-
+router.post("/newTutor", passport.authenticate('local-signup',  { successRedirect: '/dashboard',
+    failureRedirect: '/'}
+    ));
     
-    var tutor = req.body;
-    //Parameter names based on object sent from frontend js
+    // var tutor = req.body;
+    // //Parameter names based on object sent from frontend js
 
-    //Check if this user already exists bu comparing email
-    db.Tutor.findAll({
-        where: { email: tutor.email }
-     }).then(function() {
+    // //Check if this user already exists bu comparing email
+    // db.Tutor.findAll({
+    //     where: { email: tutor.email }
+    //  }).then(function() {
 
-     })
-    db.Tutor.create({
-        tutor_first_name: tutor.firstName,
-        tutor_last_name: tutor.lastName,
-        tutor_agency: tutor.agency,
-        email: tutor.email,
-        password: tutor.password
-    }).then(function(newUser) {
-        console.log("New tutor signed up!");
-        console.log(newUser);
-    })
+    //  })
+    // db.Tutor.create({
+    //     tutor_first_name: tutor.firstName,
+    //     tutor_last_name: tutor.lastName,
+    //     tutor_agency: tutor.agency,
+    //     email: tutor.email,
+    //     password: tutor.password
+    // }).then(function(newUser) {
+    //     console.log("New tutor signed up!");
+    //     console.log(newUser);
+    // })
 
-});
+// });
 
 //Authenticate tutor
 router.get("/tutorLogin", function(req, res) {
