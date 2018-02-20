@@ -41,15 +41,32 @@ var db = require("../models/");
         //STUDENT PROFILE (Tutor View and Teacher View)
     //GET - Most recent 5 tutor messages/notes from the messages table
 
+
     //GET - Most recent 5 teacher messages/notes from the messages table
 
-    //GET - All tutor notes from the messages table
-
-    //GET - All teacher notes from the messages table
-
+    //GET - All notes from the messages table
+    router.get("/api/messages/:student?", function(req, res){
+        var studentId = req.student
+        db.Message.findAll({where:{studentId:studentId}}).then(function(results){
+            //update with correct handlebars template
+            res.render("index", results);
+        });
+    });
     //PATCH - Update/edit a message from the messages table
-
+    router.patch("/:messageId?", function(req,res){
+        var messageID = req.messageId;
+        db.Message.update({text:req.text, where:{id:messageID}}).then(function(results){
+            res.json(results);
+        })
+    });
     //PATCH messages - Change to read (tutor)
+    router.patch("/:messageId?", function(req, res){
+        var messageID = req.messageId;
+        db.Message.update({tutor_read:true, where:{messageId:messageID}}).then(function(results){
+            console.log(results);
+            redirect.reload();
+        });
+    });
 
     //GET - Notes / Landing Page (HTML Routes)
 
