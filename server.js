@@ -51,6 +51,8 @@ app.use(tutor_routes);
 // app.use(teacher_routes);
 app.use(html_routes);
 
+//passport strategies used for authentication
+require('./config/passport/passport.js')(passport, db.tutor);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
