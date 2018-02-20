@@ -35,8 +35,11 @@
   },
   "homepage": "https://github.com/bewitchedfencer/student-squad#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
     "handlebars": "^4.0.11",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.2",
