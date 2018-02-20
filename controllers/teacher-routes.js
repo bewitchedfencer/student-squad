@@ -6,7 +6,9 @@ var db = require("../models/");
     //TEACHER LANDING PAGE
 
         //POST: Send message to entire class/classes
-    router.post("/newTeacher", function(req, res){
+    router.post("/classMessage/", function(req, res){
+        //this is incorrect I need to send a message
+        //ask Lisa for help on this
         var teacher = req.body;
         db.Teacher.create({
             first_name:teacher.firstName,
@@ -34,7 +36,7 @@ var db = require("../models/");
         //Get: list of students in each class - when user clicks on class, generate dropdown with list
         router.get("/:classId?/", function(req, res){
             var classId = req.classId;
-            //not sure how to query this one to return the 
+            //not sure how to query this one to return the list of students
             // db.Roster.findAll({attributes:[''], where:{classId=classId}})
         });
 
@@ -74,3 +76,5 @@ var db = require("../models/");
 
     //Messages
     //POST - Create a new teacher message (student name, date, length of session, message, next topics to cover);
+    //this will be similar to the post above when that is corrected
+    
