@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes){
-    var Roster = sequelize.define('roster', {
+    var Roster = sequelize.define('Roster', {
         term : {
             type:DataTypes.STRING,
             allowNull: false
