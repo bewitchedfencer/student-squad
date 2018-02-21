@@ -1,11 +1,14 @@
 module.exports = function (sequelize, DataTypes) {
-    var Message = sequelize.define('message', {
+    var Message = sequelize.define('Message', {
         author: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1, 140]
-            }
+            }},
+        authorType:{
+            type:DataTypes.ENUM('Tutor','Teacher'),
+            allowNull:false,
         },
         text: {
             type: DataTypes.STRING,

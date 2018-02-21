@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Tutor = sequelize.define('tutor', {
+    var Tutor = sequelize.define('Tutor', {
         tutor_first_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -30,10 +30,10 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    // Tutor.associate = function (models) {
-    //     Tutor.hasMany(models.Student);
-    //     Tutor.hasMany(models.Message);
-    // };
+    Tutor.associate = function (models) {
+        Tutor.hasMany(models.Student);
+        Tutor.hasMany(models.Message);
+    };
 
     return Tutor;
 }

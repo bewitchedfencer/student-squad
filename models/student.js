@@ -1,5 +1,5 @@
 module.exports = function (sequelize, DataTypes) {
-    var Student = sequelize.define('student', {
+    var Student = sequelize.define('Student', {
         student_first_name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -23,12 +23,12 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
-    // Student.associate = function(models) {        
-    //     Student.belongsToMany(models.Class, {
-    //        through:models.Roster
-    //     });
-    //     Student.hasMany(models.Message);
+    Student.associate = function(models) {        
+        Student.belongsToMany(models.Classroom, {
+           through:models.Roster
+        });
+        Student.hasMany(models.Message);
     
-    // };
+    };
     return Student;
 };

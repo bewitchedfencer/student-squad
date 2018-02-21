@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Class = sequelize.define("Class", {
+    var Classroom = sequelize.define("Classroom", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -18,16 +18,16 @@ module.exports = function(sequelize, DataTypes) {
 
     });
 
-    //Associate classes with teacher (1 teacher per class)
+    // Associate classes with teacher (1 teacher per class)
 
-    // Class.associate = function(models) {
-    //     Class.belongsTo(models.Teacher);
+    Classroom.associate = function(models) {
+        Classroom.belongsTo(models.Teacher);
 
-    //     Class.belongsToMany(models.Student, {
-    //         through:models.Roster
-    //     });
-    // };
+        Classroom.belongsToMany(models.Student, {
+            through:models.Roster
+        });
+    };
 
-    return Class;
+    return Classroom;
 
 }

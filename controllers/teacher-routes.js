@@ -8,8 +8,8 @@ var db = require("../models/");
         //POST: Send message to entire class/classes
     router.post("/classMessage/", function(req, res){
         //this is incorrect I need to send a message
-        //ask Lisa for help on this
-        var teacher = req.body;
+        //double check how this and other variables are being sent
+        var message = req.body.message;
         db.Teacher.create({
             first_name:teacher.firstName,
             last_name:teacher.lastName,
@@ -23,7 +23,7 @@ var db = require("../models/");
         //GET: Get list of classses 
         router.get("/classes", function(req, res){
             var teacher = $this.teacherId;
-            db.Class.findAll({where: {teacherId:teacher}}).then(function(results){
+            db.Classroom.findAll({where: {teacherId:teacher}}).then(function(results){
                 var hdbsObj = {
                     classes:results
                 };
@@ -34,15 +34,17 @@ var db = require("../models/");
         });
 
         //Get: list of students in each class - when user clicks on class, generate dropdown with list
-        router.get("/:classId?/", function(req, res){
+        router.get("/:classId", function(req, res){
             var classId = req.classId;
             //not sure how to query this one to return the list of students
-            // db.Roster.findAll({attributes:[''], where:{classId=classId}})
+            db.Roster.findAll({where:{classId:classId}}).then(function(results){
+                console.log(results[0]);
+            })
         });
 
         //STUDENT PROFILE (Tutor View and Teacher View)
     //GET - Most recent 5 tutor messages/notes from the messages table
-
+        
 
     //GET - Most recent 5 teacher messages/notes from the messages table
 
