@@ -9,23 +9,54 @@ body {
 
 #splashimg {
     position: absolute;
-left: 0%;
-right: 0%;
-top: 14.65%;
-bottom: 12.11%;
-
-background: linear-gradient(180deg, rgba(142, 68, 173, 0.79) 0%, rgba(142, 68, 173, 0.79) 11.05%, rgba(142, 68, 173, 0) 100%), url(open-book-library-education-read-159621.jpg);
+    left: 0%;
+    right: 0%;
+    top: 14.65%;
+    bottom: 12.11%;
+    background: linear-gradient(180deg, rgba(142, 68, 173, 0.79) 0%, rgba(142, 68, 173, 0.79) 11.05%, rgba(142, 68, 173, 0) 100%), url(open-book-library-education-read-159621.jpg);
 }
 
-.title{
+.title {
     text-align: center;
 }
 
-.about{
+.about {
     position: absolute;
-width: 1250px;
-height: 271px;
-left: 95px;
-top: 589px;
+    width: 1250px;
+    height: 271px;
+    left: 95px;
+    top: 589px;
+}
 
+/* Tutor CSS */
+
+.menu {
+    width: 200px;
+    height: 100vw;
+    background: #724E87;
+    text-align: center
+}
+
+.menu .menu-label {
+    color: white;
+    padding: 20px 0px;
+    font-size: 24px
+}
+
+.menu-list .students {
+    color: white;
+    padding: 20px 0px
+}
+
+#addStudent {
+    margin: 10% 0px;
+}
+
+.unread {
+    font-size: 24px;
+    padding: 20px 0;
+}
+
+#bottomMessage {
+    margin: 30% 0;
 }
