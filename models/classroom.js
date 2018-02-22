@@ -15,6 +15,11 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1, 140]
             }
         },
+        term: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            
+        }
 
     });
 

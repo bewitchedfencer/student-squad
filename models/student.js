@@ -1,25 +1,43 @@
 module.exports = function (sequelize, DataTypes) {
     var Student = sequelize.define('Student', {
-        student_first_name: {
+        first_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1, 140]
             }
         },
-        student_last_name: {
+        last_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1, 140]
             }
         },
-        unique_id: {
-            type: DataTypes.STRING,
+        student_num: {
+            type: DataTypes.INTEGER,
             allowNull: false,
+        },
+        grade: {
+            type: DataTypes.STRING
         },
         dob: {
             type: DataTypes.DATEONLY
+        },
+        primary_contact_first: {
+            type: DataTypes.STRING
+        },
+        primary_contact_last: {
+            type: DataTypes.STRING
+        },
+        primary_contact_phone: {
+            type: DataTypes.STRING
+        },
+        primary_contact_email: {
+            type: DataTypes.STRING,
+            validate: {
+                isEmail: true,
+            }
         }
     });
 
@@ -28,7 +46,7 @@ module.exports = function (sequelize, DataTypes) {
     //        through:models.Roster
     //     });
     //     Student.hasMany(models.Message);
-    
+
     // };
     return Student;
 };
