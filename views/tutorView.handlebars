@@ -1,15 +1,12 @@
 {{!-- Insert navbar partial --}}
+{{>partials/navbar}}
 {{!-- Insert tabs partial --}}
-
-{{!-- Should this go in the messages partial? --}}
+<div class="column is-three-quarters">
+{{>partials/tabs}}
 {{!-- for each unread Message --}}
-<article class="message">
-  <div class="message-header">
-    {{!-- <p>Student Name</p> --}}
-    <button class="delete" aria-label="delete"></button>
-  </div>
-  <div class="message-body">
+
    {{!-- Message text --}}
   </div>
 </article>
 {{!-- close each loop --}}
+</div>
