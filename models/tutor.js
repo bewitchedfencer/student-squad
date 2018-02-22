@@ -16,23 +16,13 @@ module.exports = function (sequelize, DataTypes) {
         },
         tutor_agency: {
             type: DataTypes.STRING
-        }, 
-        email: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isEmail: true,
-            }
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false
         }
     });
 
     Tutor.associate = function (models) {
         Tutor.hasMany(models.Student);
         Tutor.hasMany(models.Message);
+        Tutor.belongsTo(models.User);
     };
 
     return Tutor;
