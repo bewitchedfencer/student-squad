@@ -41,16 +41,20 @@ app.set("view engine", "handlebars");
 // Routes
 // =============================================================
 
-const tutor_routes = require("./controllers/tutor-routes.js");
-// var teacher_routes= require("./controllers/teacher-routes.js");
-const html_routes = require("./controllers/html-routes.js")
+const tutor_routes = require("./routes/tutor-routes.js");
+// var teacher_routes= require("./routes/teacher-routes.js");
+const html_routes = require("./routes/html-routes.js");
+
+const auth_routes = require("./routes/auth-routes.js");
 
 app.use(tutor_routes);
 // app.use(teacher_routes);
 app.use(html_routes);
 
+app.use(auth_routes);
+
 //passport strategies used for authentication
-require('./config/passport/passport.js')(passport, db.Tutor);
+require('./config/passport/passport.js')(passport, db.User);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================

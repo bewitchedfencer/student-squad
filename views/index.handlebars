@@ -19,16 +19,26 @@
 
 
 {{!-- NEW TUTOR --}}
-<div>
-    <form id="signup" name="signup" method="post" action="/newTutor">
+<div style="margin-left: 15px; margin-right:15px;">
+    <form id="signup" name="signup" method="post" action="/newUser">
+
+        <label for="userType">Please select your user type:</label>
+        <input type="radio" name="userType" value="tutor"> Tutor
+        <br>
+        <input type="radio" name="userType" value="teacher"> Teacher
+        <br>
+        <input type="radio" name="userType" value="parent" disabled> Parent -
+        <i>Coming Soon!</i>
+        <br>
+
         <label for="email">Email Address</label>
         <input class="text" name="email" type="email" />
 
-        <label for="firstname">Firstname</label>
-        <input name="firstname" type="text" />
+        <label for="firstName">Firstname</label>
+        <input name="firstName" type="text" />
 
-        <label for="lastname">Lastname</label>
-        <input name="lastname" type="text" />
+        <label for="lastName">Lastname</label>
+        <input name="lastName" type="text" />
 
         <label for="password">Password</label>
         <input name="password" type="password" />
@@ -44,7 +54,7 @@
 {{!-- EXISTING TUTOR --}}
 <div>
     <br>
-    <form id="signin" name="signin" method="get" action="/tutorLogin">
+    <form id="signin" name="signin" method="get" action="/userLogin">
         <label for="email">Email Address</label>
         <input class="text" name="email" type="email" />
         <label for="password">Password</label>

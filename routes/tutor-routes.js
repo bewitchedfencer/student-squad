@@ -6,18 +6,18 @@ var passport = require("passport");
 //REGISTER NEW TUTOR
 
 //Request received to register a new tutor
-router.post("/newTutor", passport.authenticate('local-signup', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/'
-}));
+// router.post("/newTutor", passport.authenticate('local-signup', {
+//     successRedirect: '/dashboard',
+//     failureRedirect: '/'
+// }));
 
 
-//Authenticate tutor
-router.get("/tutorLogin", passport.authenticate('local-signin', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/'
-})
-);
+//Authenticate User
+// router.get("/userLogin", passport.authenticate('local-signin', {
+//     successRedirect: '/dashboard',
+//     failureRedirect: '/'
+// })
+// );
 
 //TUTOR HOME PAGE
 
