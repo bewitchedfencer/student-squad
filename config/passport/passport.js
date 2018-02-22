@@ -35,7 +35,7 @@ module.exports = function (passport, user) {
         },
         //function to store user's info; email, pw, and a cb function to run once new user is added
         function (req, email, password, done) {
-            // console.log(req.body);
+            console.log(req.body);
 
             //function to hash password
             var generateHash = function (password) {
@@ -72,20 +72,33 @@ module.exports = function (passport, user) {
                             if (req.body.userType == "tutor") {
 
                                 var tutorData = {
-                                    tutor_first_name: req.body.firstName,
-                                    tutor_last_name: req.body.lastName,
+                                    first_name: req.body.firstName,
+                                    last_name: req.body.lastName,
                                     tutor_agency: req.body.agency,
                                     UserId: newUser.id
                                 };
 
                                 db.Tutor.create(tutorData).then(function (newTutor) {
-                                    console.log(newTutor.tutor_first_name);
+                                    console.log(newTutor.first_name);
                                     return done(null, newUser);
                                 });
 
                             };
+                            if (req.body.userType == "teacher") {
+                                console.log(req.body);
+                                var teacherData = {
+                                    first_name: req.body.firstName,
+                                    last_name: req.body.lastName,
+                                    subject: req.body.subject,
+                                    UserId: newUser.id
+                                };
 
+                                db.Teacher.create(teacherData).then(function (newTeacher) {
+                                    console.log(newTeacher.first_name);
+                                    return done(null, newUser);
+                                });
 
+                            };
 
                         }
                     })

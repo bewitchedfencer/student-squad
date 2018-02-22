@@ -15,18 +15,10 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1, 140]
             }
         },
-        email: {
-            type: DataTypes.STRING,
+        subject:{
+            type:DataTypes.STRING,
             allowNull: false,
-            validate: {
-                isEmail: true,
-            }
-        },
-        password: {
-            type: DataTypes.STRING,
-            allowNull:false
         }
-
     });
 
     // Associate teacher with classes

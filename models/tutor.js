@@ -1,13 +1,13 @@
 module.exports = function (sequelize, DataTypes) {
     var Tutor = sequelize.define('Tutor', {
-        tutor_first_name: {
+        first_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 len: [1, 140]
             }
         },
-        tutor_last_name: {
+        last_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
