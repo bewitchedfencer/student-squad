@@ -168,4 +168,18 @@ exports.getStudentsInClass = function (req, res) {
             redirect.reload();
         });
     };
+
+    exports.postToStudent = function (req, res) {
+        var student = req.params.student;
+        //make sure the object sent from the front end has properties that match
+        // the message model
+        var newMessage = req.body;
+        db.Message.create({
+            newMessage, where:{StudentId:student}
+        }).then(function (errors) {
+            if (errors) throw errors;
+            res.send("A new message has been sent to this student in your class!");
+            redirect.reload();
+        });
+    };
 }
