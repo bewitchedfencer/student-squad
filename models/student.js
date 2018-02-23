@@ -25,9 +25,7 @@ module.exports = function (sequelize, DataTypes) {
         grade: {
             type: DataTypes.STRING
         },
-        dob: {
-            type: DataTypes.DATEONLY
-        },
+
         primary_contact_first: {
             type: DataTypes.STRING
         },
@@ -43,6 +41,9 @@ module.exports = function (sequelize, DataTypes) {
                 isEmail: true,
             }
         }
+    },
+    {
+      timestamps: false
     });
 
     // Student.associate = function(models) {        
