@@ -1,13 +1,17 @@
 {{!-- Insert navbar partial --}}
-{{>partials/navbar}}
+{{> navbar}}
 {{!-- Insert tabs partial --}}
-<div class="column is-three-quarters">
-{{>partials/tabs}}
+<div class="column">
+{{> tabs}}
+<div class="columns">
+<div class="column is-1">
+            <a class="button is-primary" id="addStudent" href="">Add Student</a>
+</div>
 {{!-- for each unread Message --}}
 {{#each messages}}
     {{#unless tutor_read}}
     {{!-- Builds a message element --}}
-    <div class="column is-two-thirds">
+    {{!-- <div class="column is-9"> --}}
         <article class="message is-dark {{source}}">
             <div class="message-header">
                 <p>{{studentName}} {{date}}</p>
@@ -21,8 +25,5 @@
     </div>
     {{/unless}}
 {{/each}}
-
+{{!-- </div> --}}
 </div>
-<div class="column">
-            <a class="button is-large is-primary" id="addStudent" href="">Add Student</a>
-        </div>
