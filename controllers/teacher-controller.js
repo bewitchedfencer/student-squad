@@ -60,4 +60,30 @@ exports.addClass = function (req, res) {
     }).then(function () {
         res.json("/");
     });
+};
+
+exports.getTutorMessages = function(req, res){
+    var studentID = req.params.student;
+    db.Message.findAll({limit:5, where:{StudentId:studentID, authorType:"Tutor"}, order:[['createdAt', 'DESC']]})
+    .then(function(results){
+        var hdbsObj = {
+            Messages:results
+        };
+        //put the correct handlebars file
+        res.render("tutorRecentMessages", hdbsObj)
+    });
+};
+
+exports.getTeacherMessages = function(req, res){
+    var studentID = req.params.student;
+    db.Message.findAll({limit:5, where:{StudentId:studentID, authorType:"Teacher"}, order:[['createdAt', 'DESC']]})
+    .then(function(results){
+        var hdbsObj = {
+            Messages:results
+        };
+        //put the correct handlebars file
+        res.render("teacherRecentMessages", hdbsObj)
+    });
+};
+
 }

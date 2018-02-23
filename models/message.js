@@ -7,6 +7,10 @@ module.exports = function (sequelize, DataTypes) {
                 len: [1, 140]
             }
         },
+        authorType:{
+            type:DataTypes.ENUM("Tutor", "Teacher"),
+            allowNull:false
+        },
         text: {
             type: DataTypes.STRING,
             allowNull: false,
