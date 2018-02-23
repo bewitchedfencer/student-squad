@@ -18,6 +18,10 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
+        unique_id:{
+            type:DataTypes.STRING,
+            allowNull:false
+        },
         grade: {
             type: DataTypes.STRING
         },

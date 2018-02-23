@@ -1,5 +1,6 @@
 module.exports = function (sequelize, DataTypes) {
     var Classroom = sequelize.define("Classroom", {
+
             name: {
                 type: DataTypes.STRING,
                 allowNull: false,
@@ -20,9 +21,12 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false,
 
             },
-        }, {
+            classroom_code:{
+            type:DataTypes.STRING,
+            allowNull:false
+            }, {
             timestamps: false
-        }
+          }
 
     );
 
