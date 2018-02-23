@@ -66,3 +66,50 @@ top: 75px;
 #bottomMessage {
     margin: 30% 0;
 }
+
+/* Log in Page */
+
+.mainTitle {
+    font-family: Reem Kufi;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    font-size: 64px;
+    text-align: center;
+}
+
+.books {
+    height: 80vh;
+    width: 100%;
+}
+
+.card1 {
+    position: absolute;
+    width: 370px;
+    height: 270px;
+    left: 15vw;
+    top: 589px;
+}
+
+.card2 {
+    position: absolute;
+    width: 370px;
+    height: 270px;
+    left: 40vw;
+    top: 589px;
+}
+
+.card3 {
+    position: absolute;
+    width: 370px;
+    height: 270px;
+    left: 65vw;
+    top: 590px;
+}
+
+.loginButton {
+    position: absolute;
+    width: 203px;
+    left: 45vw;
+    top: 20vh;
+}
