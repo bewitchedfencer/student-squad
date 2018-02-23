@@ -86,3 +86,18 @@ exports.studentProfile = function (req, res) {
 
 
 //Retrieve all messages that are unread
+
+//teacher read a tutor's message
+
+exports.teacherRead = function (req, res) {
+    var messageID = req.params.messageId;
+    db.Message.update({
+        teacher_read: true,
+        where: {
+            messageId: messageID
+        }
+    }).then(function (err) {
+        if (err) throw err;
+        redirect.reload();
+    });
+};
