@@ -122,6 +122,14 @@ top: 75px;
     top: 30vh;
 }
 #studentCard {
-    left: 15px;
-    width: 275px;
+    left: 25px;
+    width: 310px;
+    margin-top: 25px;
+}
+.tabs {
+    margin-top: 25px;
+    margin-left: 15px;
+}
+.msgbtn {
+    margin: 5px;
 }

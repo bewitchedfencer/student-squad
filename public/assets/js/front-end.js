@@ -1,8 +1,5 @@
-
-
-=======
-                    //If teacher> send request to get teacher view
-  // Modal triggers
+//If teacher> send request to get teacher view
+// Modal triggers
 //Signup modal
 $("#signupButton").on("click", function(event){
     event.preventDefault();
@@ -14,8 +11,18 @@ $("#loginButton").on("click", function(event){
     event.preventDefault();
     $("#loginModal").addClass("is-active");
 });
-
-//Closes modals
+// Message modal
+$("#messageButton").on("click", function(event){
+    event.preventDefault();
+    $("#messageModal").addClass("is-active");
+});
+//View ALl Messages modal -- Will need additional JS to render all messages, unless we want it hidden in the background
+$("#allMessages").on("click", function(event){
+    event.preventDefault();
+    $("#allMessageModal").addClass("is-active");
+});
+//Closes modals in all pages, with the .modal-background being built into Bulma
+//and the id #modalClose attached to each individual modal delete button
 $(".modal-background").on("click", function(){
     $(".modal").removeClass("is-active");
 })

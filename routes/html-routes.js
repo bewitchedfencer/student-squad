@@ -17,7 +17,7 @@ router.get("/", function(req, res) {
 // // tutor view test route
 // router.get("/tutorview", function(req,res){
 //     console.log(req.body);
-//     res.render("tutorView");
+//     res.render("tutorview");
 // })
 //student profile test route
 router.get("/studentprofile", function(req,res){

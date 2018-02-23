@@ -2,7 +2,11 @@
 {{> navbar}}
 {{!-- Insert tabs partial --}}
 <div class="column">
-{{> tutortabs}}
+  {{#if tutor}}
+    {{> tutortabs}}
+  {{else}}
+    {{> teachertabs}}
+  {{/if}}
 <div class="columns">
 <div class="column is-1">
             <a class="button is-primary" id="addStudent" href="">Add Student</a>
