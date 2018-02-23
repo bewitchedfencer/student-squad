@@ -2,15 +2,24 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models/");
 var passport = require("passport");
+var tutorController = require("../controllers/tutor-controller.js");
 
 //REGISTER NEW TUTOR
 
-//Request received to register a new tutor
-// router.post("/newTutor", passport.authenticate('local-signup', {
-//     successRedirect: '/dashboard',
-//     failureRedirect: '/'
-// }));
+//
+router.get("/tutorView", isLoggedIn, tutorController.tutorHome)
 
+function isLoggedIn(req, res, next) {
+
+    
+    if (req.isAuthenticated()) {
+        console.log("logged in!");
+        // console.log(res);
+        return next();
+    }
+    console.log("Not authenticated!")
+    res.redirect('/');
+};
 
 //Authenticate User
 // router.get("/userLogin", passport.authenticate('local-signin', {

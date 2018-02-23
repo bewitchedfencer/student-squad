@@ -1,6 +1,6 @@
 {{!-- DUMMY DATA TO TEST TUTOR AUTHENTICATION: --}}
 
-<section class="section" id="login">
+{{!-- <section class="section" id="login">
     <div class="container">
         <h1 class="title">
             Project Name
@@ -15,7 +15,7 @@
 
         </div>
     </div>
-</section>
+</section> --}}
 
 
 {{!-- NEW TUTOR --}}
@@ -63,7 +63,7 @@
 {{!-- EXISTING TUTOR --}}
 <div>
     <br>
-    <form id="signin" name="signin" method="get" action="/userLogin">
+    <form id="signin" name="signin" method="post" action="/userLogin">
         <label for="email">Email Address</label>
         <input class="text" name="email" type="email" />
         <label for="password">Password</label>
