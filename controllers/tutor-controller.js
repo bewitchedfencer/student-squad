@@ -1,5 +1,6 @@
 var db = require("../models/");
-
+var Sequelize = require('sequelize');
+var Op = Sequelize.Op;
 var exports = module.exports = {};
 
 exports.tutorHome = function (req, res) {
@@ -13,6 +14,9 @@ exports.tutorHome = function (req, res) {
             TutorId: tutor.id
         }
     }).then(function (results) {
+        if (!results)
+
+
         var studentObj = {
             students: results
         };

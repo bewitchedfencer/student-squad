@@ -9,26 +9,12 @@ var tutorController = require("../controllers/tutor-controller.js");
 //
 router.get("/tutorView", isLoggedIn, tutorController.tutorHome)
 
-function isLoggedIn(req, res, next) {
-
-    
-    if (req.isAuthenticated()) {
-        console.log("logged in!");
-        // console.log(res);
-        return next();
-    }
-    console.log("Not authenticated!")
-    res.redirect('/');
-};
-
-
-
 //PATCH ROUTES - Updates the tutor_id field for student with code entered
 router.patch("/addStudent/:studentId", isLoggedIn, tutorController.addStudent);
 
 
 //GET: View the student profile that was clicked - will send student data to handlebars page
-// router.get("/studentProfile/:studentId", isLoggedIn, tutorController.getStudent);
+router.get("/studentProfile/:studentId", isLoggedIn, tutorController.studentProfile);
 
 
 //GET: Go to Notes page: Get route using handlebars
@@ -61,6 +47,16 @@ router.patch("/addStudent/:studentId", isLoggedIn, tutorController.addStudent);
 //GET: Get list of classses 
 
 //Get: list of students in each class - when user clicks on class, generate dropdown with list
+function isLoggedIn(req, res, next) {
 
+    
+    if (req.isAuthenticated()) {
+        console.log("logged in!");
+        // console.log(res);
+        return next();
+    }
+    console.log("Not authenticated!")
+    res.redirect('/');
+};
 
 module.exports = router;
