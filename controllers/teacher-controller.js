@@ -1,12 +1,13 @@
 var exports = module.exports = {};
 
+//gets class data for the teacher user
 exports.getClassrooms = function (req, res) {
-    var teacher = $this.teacherId;
     db.Classroom.findAll({
         where: {
-            teacherId: teacher
+            teacherId: req.teacher
         }
     }).then(function (results) {
+        //creating an object to send to handlebars
         var hdbsObj = {
             classes: results
         };
@@ -73,7 +74,7 @@ exports.getStudentsInClass = function (req, res) {
                 classroom_code: classroomCode
             }
         }).then(function () {
-            res.json("/");
+            res.send("Class added to teacher user.");
         });
     };
 

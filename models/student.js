@@ -46,14 +46,14 @@ module.exports = function (sequelize, DataTypes) {
       timestamps: false
     });
 
-    // Student.associate = function(models) {        
-    //     Student.belongsToMany(models.Class, {
-    //        through:models.Roster
-    //     });
-    //     Student.hasMany(models.Message);
+    Student.associate = function(models) {        
+        Student.belongsToMany(models.Classroom, {
+           through:models.Roster
+        });
+            //Student has many messages association 
+        Student.hasMany(models.Message);
 
-    // };
+    };
 
-    //Student has many messages association 
     return Student;
 };
