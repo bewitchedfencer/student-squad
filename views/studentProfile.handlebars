@@ -25,10 +25,17 @@
 {{!-- Teacher's 5 most recent messages partial --}}
  {{#each messages}}
  {{!-- If the message is from a teacher --}}
-  {{#if teachermesage}}
+  {{#if teachermessage}}
     {{> messages}}
-    {{!-- loop eacher messages --}}
+  {{/if}}
+{{/each}}
 {{!-- tutor's 5 most recent messages partial --}}
+ {{#each messages}}
+ {{!-- If the message is from a teacher --}}
+  {{#if tutormessage}}
+    {{> messages}}
+  {{/if}}
+{{/each}}
 </div>
 </div>
 <div class="column">
