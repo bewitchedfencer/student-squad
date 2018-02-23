@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
             }
         },
         authorType:{
-            type:DataTypes.ENUM("Tutor", "Teacher"),
+            type:DataTypes.ENUM("tutor", "teacher"),
             allowNull:false
         },
         text: {
@@ -30,6 +30,10 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
 
+
+    Message.associate = function(models) {        
+        Message.belongsTo(models.Student)
+    };
     return Message;
 
 }

@@ -20,6 +20,7 @@ exports.tutorHome = function (req, res) {
         };
 
         var studentIds = [];
+
         (studentObj.students).forEach(function (student) {
             studentIds.push(student.id);
         });
@@ -37,13 +38,14 @@ exports.tutorHome = function (req, res) {
                 messages
             };
 
-            console.log(unreadMsg.messages.text)
+            console.log(unreadMsg.messages.text);
+            res.render('tutorView', studentObj, unreadMsg);
         })
         //find all messages from the message table that have a student Id = one 
         //of the studentObj.students.id and status is tutorUnread, false
     });
 
-    res.render('tutorView', studentObj, unreadMsg);
+    
 };
 
 //add a student to this tutor
