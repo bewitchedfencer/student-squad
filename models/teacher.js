@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var Teacher = sequelize.define("Teacher", {
         first_name: {
             type: DataTypes.STRING,
@@ -15,14 +15,14 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1, 140]
             }
         },
-        subject:{
-            type:DataTypes.STRING,
+        subject: {
+            type: DataTypes.STRING,
             allowNull: false,
         }
     });
 
     // Associate teacher with classes
-    Teacher.associate = function(models) {
+    Teacher.associate = function (models) {
         Teacher.hasMany(models.Classroom);
         Teacher.hasMany(models.Message);
     };
