@@ -45,8 +45,8 @@ router.patch("/addStudent/:studentId", isLoggedIn, tutorController.addStudent);
 
 //PATCH - Update/edit a message from the messages table
 
-//PATCH messages - Change to read (tutor)
-
+//PATCH messages - Change to read (teacher)
+router.patch("/teacherRead/:messageId", teacherController.teacherRead);
 //GET - Notes / Landing Page (HTML Routes)
 
 //Messages

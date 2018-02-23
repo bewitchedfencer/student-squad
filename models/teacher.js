@@ -25,6 +25,7 @@ module.exports = function (sequelize, DataTypes) {
     Teacher.associate = function (models) {
         Teacher.hasMany(models.Classroom);
         Teacher.hasMany(models.Message);
+        Teacher.belongsTo(models.user);
     };
 
     return Teacher;
