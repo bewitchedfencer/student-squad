@@ -14,7 +14,10 @@ router.get("/dashboard", isLoggedIn, function(req, res) {
     console.log(req.body);
     res.render("dashboard");
 });
-
+router.get("/tutorview", function(req,res){
+    console.log(req.body);
+    res.render("tutorView");
+})
 //Logout (Currently manual)
 router.get("/logout", function(req, res) {
     req.session.destroy(function(err) {

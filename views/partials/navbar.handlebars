@@ -1,11 +1,14 @@
-<div class="column studentPanel">
+<div class="studentPanel">
     <aside class="menu">
         <p class="menu-label">
             User Name
         </p>
         <ul class="menu-list">
+            <p>test</p>
             {{!-- each loop for students --}} {{#each students}}
+            
             <li data-id={{id}}>{{name}}</li>
+            {{/each}}
         </ul>
     </aside>
 </div>
