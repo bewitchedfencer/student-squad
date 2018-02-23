@@ -24,10 +24,12 @@ module.exports = function (sequelize, DataTypes) {
             classroom_code:{
             type:DataTypes.STRING,
             allowNull:false
-            }, {
+            },
+           
+          },
+          {
             timestamps: false
           }
-
     );
 
     //Associate classes with teacher (1 teacher per class)
