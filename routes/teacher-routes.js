@@ -31,13 +31,10 @@ router.get("/recentTeacher/:student", teacherController.getTeacherMessages);
 router.get("/api/messages/:student", teacherController.allMessages);
 
 //PATCH - Update/edit a message from the messages table
-router.patch("/:messageId", teacherController.editMessage);
+router.patch("/editMessage/:messageId", teacherController.editMessage);
 
 //PATCH messages - Change to read (tutor)
-router.patch("/:messageId", teacherController.tutorRead);
-
-//PATCH messages - Change to read (teacher)
-router.patch("/:messageId", teacherController.teacherRead);
+router.patch("/tutorRead/:messageId", teacherController.tutorRead);
 
 //Messages
 //POST - Create a new teacher message 
