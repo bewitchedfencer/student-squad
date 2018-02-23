@@ -1,5 +1,6 @@
 var db = require("../models/");
-
+var Sequelize = require('sequelize');
+var Op = Sequelize.Op;
 var exports = module.exports = {};
 
 exports.tutorHome = function (req, res) {
@@ -13,6 +14,7 @@ exports.tutorHome = function (req, res) {
             TutorId: tutor.id
         }
     }).then(function (results) {
+        //Check if there are any results, display message if not
         var studentObj = {
             students: results
         };
@@ -46,7 +48,7 @@ exports.tutorHome = function (req, res) {
 
 //add a student to this tutor
 exports.addStudent = function (req, res) {
-    var studentCode = req.body.studentCode;
+    var studentCode = req.params.studentId;
     studentCode = studentCode.toLowerCase.trim();
     var tutor = req.user //determine how to save the id for this user
 
@@ -66,8 +68,10 @@ exports.studentProfile = function (req, res) {
     var studentId = req.params.studentId;
     var tutor = req.user //determine how to save the id for this user
 
-    db.Student.findOne({ 
-        where: {id: studentId}
+    db.Student.findOne({
+        where: {
+            id: studentId
+        }
     }).then(function (student) {
         var studentObj = {
             student
