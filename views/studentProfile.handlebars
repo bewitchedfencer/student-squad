@@ -1,19 +1,35 @@
 {{!-- Insert navbar partial --}}
-{{>partials/navbar}}
+{{> navbar}}
 {{!-- Insert tabs partial --}}
-<div class="columns is-three-quarters">
-{{>partials/tabs}}
-{{!-- Media object with Student's information --}}
 <div class="column">
-     <div class="card">
-            <div class="card-content">
-                            <p class="subtitle">{{studentName}}</p>
-            </div>
+{{> tutortabs}}
+<div class="columns">
+{{!-- Card object with Student's information --}}
+<div class="card" id="studentCard">
+  <header class="card-header">
+    <p class="card-header-title">
+      {{studentname}}
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+     <p>Grade:{{grade}}</p>
+      <p>Date of Birth:{{dob}}</p>
     </div>
+  </div>
+  <footer class="card-footer">
+    <p>Primary Contact:</p>
+      <p>{{contactname}} {{contactnumber}}</p>
+  </footer>
 </div>
 {{!-- Teacher's 5 most recent messages partial --}}
- 
+ {{#each messages}}
+ {{!-- If the message is from a teacher --}}
+  {{#if teachermesage}}
+    {{> messages}}
+    {{!-- loop eacher messages --}}
 {{!-- tutor's 5 most recent messages partial --}}
+</div>
 </div>
 <div class="column">
         </div>
