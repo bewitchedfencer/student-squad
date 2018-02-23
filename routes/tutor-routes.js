@@ -21,6 +21,10 @@ var passport = require("passport");
 
 //TUTOR HOME PAGE
 
+
+// Displayed unread messages
+
+
 //GET ROUTE - Displays students assigned to logged in tutor on navigation bar
 // router.get("/", function (req, res) {
 //     db.Student.findAll({
@@ -49,9 +53,11 @@ router.patch("/newStudent", function (req, res) {
     });
 });
 
-//Google Calendar API - Client Side Only
 
+//Get 
 //GET: View the student profile that was clicked - will send student data to handlebars page
+
+
 
 //GET: Go to Notes page: Get route using handlebars
 

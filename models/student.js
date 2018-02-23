@@ -48,5 +48,7 @@ module.exports = function (sequelize, DataTypes) {
     //     Student.hasMany(models.Message);
 
     // };
+
+    //Student has many messages association 
     return Student;
 };
