@@ -2,43 +2,22 @@ var express = require("express");
 
 var router = express.Router();
 var db = require("../models/");
-
+var teacherController = require("../controllers/teacher-controller.js")
     //TEACHER LANDING PAGE
 
         //POST: Send message to entire class/classes
-    router.post("/classMessage/", function(req, res){
-        //this is incorrect I need to send a message
-        //ask Lisa for help on this
-        var teacher = req.body;
-        db.Teacher.create({
-            first_name:teacher.firstName,
-            last_name:teacher.lastName,
-            email:teacher.email,
-            password:teacher.password
-        }).then(function(newUser){
-            console.log("New teacher added!");
-        });
-    });
+    router.post("/classMessage/", teacherController.postToClasses);
 
         //GET: Get list of classses 
-        router.get("/classes", function(req, res){
-            var teacher = $this.teacherId;
-            db.Class.findAll({where: {teacherId:teacher}}).then(function(results){
-                var hdbsObj = {
-                    classes:results
-                };
-                console.log(hdbsObj);
-                //update with correct handlebars page
-                res.render("index", hdbsObj)
-            });
-        });
+        router.get("/classes", teacherController.getClassrooms);
 
         //Get: list of students in each class - when user clicks on class, generate dropdown with list
-        router.get("/:classId?/", function(req, res){
-            var classId = req.classId;
-            //not sure how to query this one to return the list of students
-            // db.Roster.findAll({attributes:[''], where:{classId=classId}})
-        });
+        router.get("/:classId/", teacherController.getStudentsInClass);
+
+        //PATCH: add a class to the teacher (AKA, add teacher id to class)
+        router.patch("")
+        //Get: Go to a student's profile
+        router.get("/studentProfile/:student", teacherController.getStudent);
 
         //STUDENT PROFILE (Tutor View and Teacher View)
     //GET - Most recent 5 tutor messages/notes from the messages table
@@ -55,7 +34,7 @@ var db = require("../models/");
         });
     });
     //PATCH - Update/edit a message from the messages table
-    router.patch("/:messageId?", function(req,res){
+    router.patch("/:messageId", function(req,res){
         var messageID = req.messageId;
         db.Message.update({text:req.text, where:{id:messageID}}).then(function(results){
             res.json(results);

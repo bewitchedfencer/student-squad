@@ -19,7 +19,7 @@ router.get("/dashboard", isLoggedIn, function(req, res) {
 router.get("/logout", function(req, res) {
     req.session.destroy(function(err) {
         res.redirect("/")
-    })
+    });
 
 });
 
@@ -35,7 +35,5 @@ function isLoggedIn(req, res, next) {
 
     res.redirect('/');
 };
-
-
 
 module.exports = router;
