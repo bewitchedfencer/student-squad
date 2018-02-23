@@ -15,18 +15,23 @@ var teacherController = require("../controllers/teacher-controller.js")
         router.get("/:classId/", teacherController.getStudentsInClass);
 
         //PATCH: add a class to the teacher (AKA, add teacher id to class)
-        router.patch("")
+        router.patch("/addClass/", teacherController.addClass)
         //Get: Go to a student's profile
         router.get("/studentProfile/:student", teacherController.getStudent);
 
         //STUDENT PROFILE (Tutor View and Teacher View)
     //GET - Most recent 5 tutor messages/notes from the messages table
-
+    router.get("/recentTutor/:student", teacherController.getTutorMessages);
 
     //GET - Most recent 5 teacher messages/notes from the messages table
+    router.get("/recentTeacher/:student", teacherController.getTeacherMessages);
+
+
+
+
 
     //GET - All notes from the messages table
-    router.get("/api/messages/:student?", function(req, res){
+    router.get("/api/messages/:student", function(req, res){
         var studentId = req.student
         db.Message.findAll({where:{studentId:studentId}}).then(function(results){
             //update with correct handlebars template
@@ -48,10 +53,6 @@ var teacherController = require("../controllers/teacher-controller.js")
             redirect.reload();
         });
     });
-
-    //GET - Notes / Landing Page (HTML Routes)
-
-        //Get Pages: Student profile, landing page (HTML Routes)
 
     //Messages
     //POST - Create a new teacher message (student name, date, length of session, message, next topics to cover);
