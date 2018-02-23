@@ -4,9 +4,25 @@
 <div class="column is-three-quarters">
 {{>partials/tabs}}
 {{!-- for each unread Message --}}
+{{#each messages}}
+    {{#unless tutor_read}}
+    {{!-- Builds a message element --}}
+    <div class="column is-two-thirds">
+        <article class="message is-dark {{source}}">
+            <div class="message-header">
+                <p>{{studentName}} {{date}}</p>
+                <button class="delete" aria-label="delete"></button>
+            </div>
+            {{!-- Message text --}}
+            <div class="message-body">
+                {{text}}
+            </div>
+        </article>
+    </div>
+    {{/unless}}
+{{/each}}
 
-   {{!-- Message text --}}
-  </div>
-</article>
-{{!-- close each loop --}}
 </div>
+<div class="column">
+            <a class="button is-large is-primary" id="addStudent" href="">Add Student</a>
+        </div>
