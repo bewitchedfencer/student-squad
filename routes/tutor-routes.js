@@ -21,51 +21,14 @@ function isLoggedIn(req, res, next) {
     res.redirect('/');
 };
 
-//Authenticate User
-// router.get("/userLogin", passport.authenticate('local-signin', {
-//     successRedirect: '/dashboard',
-//     failureRedirect: '/'
-// })
-// );
 
-//TUTOR HOME PAGE
-
-
-// Displayed unread messages
-
-
-//GET ROUTE - Displays students assigned to logged in tutor on navigation bar
-// router.get("/", function (req, res) {
-//     db.Student.findAll({
-//         where: {
-//             tutor_id: req.body.userId //Determine how to store logged in tutor's id
-//         }
-//     }).then(function (students) {
-//         res.json(students)
-//     })
-// });
 
 //PATCH ROUTES - Updates the tutor_id field for student with code entered
-router.patch("/newStudent", function (req, res) {
-    var studentCode = req.body.studentCode;
-    studentCode = studentCode.toLowerCase.trim();
-    var tutorCode = req.body.tutorCode; //determine how to save the id for this user
-
-    db.Student.update({
-        tutor_id: tutorCode
-    }, {
-        where: {
-            unique_id: studentCode
-        }
-    }).then(function () {
-        res.json("/");
-    });
-});
+router.patch("/addStudent/:studentId", isLoggedIn, tutorController.addStudent);
 
 
-//Get 
 //GET: View the student profile that was clicked - will send student data to handlebars page
-
+router.get("/studentProfile/:studentId", isLoggedIn, tutorController.getStudent);
 
 
 //GET: Go to Notes page: Get route using handlebars

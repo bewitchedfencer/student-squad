@@ -44,14 +44,41 @@ exports.tutorHome = function (req, res) {
     res.render('tutorView', studentObj, unreadMsg);
 };
 
-
-
 //add a student to this tutor
+exports.addStudent = function (req, res) {
+    var studentCode = req.body.studentCode;
+    studentCode = studentCode.toLowerCase.trim();
+    var tutor = req.user //determine how to save the id for this user
 
-//Get all students assigned to this tutor
+    db.Student.update({
+        tutor_id: tutor.id
+    }, {
+        where: {
+            unique_id: studentCode
+        }
+    }).then(function () {
+        res.redirect("/tutorView");
+    });
+};
 
-//Get "this" student's profile
+//Get "this" student's profile and render
+exports.studentProfile = function (req, res) {
+    var studentId = req.params.studentId;
+    var tutor = req.user //determine how to save the id for this user
 
-//Add a message to the database
+    db.Student.findOne({ 
+        where: {id: studentId}
+    }).then(function (student) {
+        var studentObj = {
+            student
+        };
+        res.render("studentProfile", studentObj);
+    });
+};
+
+
+//Add a message to the database for this student
+
+
 
 //Retrieve all messages that are unread
