@@ -1,0 +1,21 @@
+{{!-- Navbar partial --}}
+{{> navbar}}
+{{!-- Tabs partial --}}
+<div class="column">
+{{#if teacher}}
+    {{> teachertabs}}
+  {{else}}
+    {{> tutortabs}}
+  {{/if}}
+<div class="columns">
+    {{!-- For each class this teacher has, render a checkbox with the class' name. --}}
+    {{#each class}}
+        <label class="checkbox" id={{className}}>
+            <input type="checkbox"> {{className}}
+        </label>
+    {{/each}}
+    {{!-- Text area for teacher to sent messages --}}
+    <textarea class="textarea is-info" placeholder="Enter your class' messages here!" rows="10"></textarea>
+    <input type="submit" clas="button is-info" value="Sumbit message">
+</div>
+</div>

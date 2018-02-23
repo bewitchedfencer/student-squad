@@ -28,7 +28,7 @@ router.patch("/addStudent/:studentId", isLoggedIn, tutorController.addStudent);
 
 
 //GET: View the student profile that was clicked - will send student data to handlebars page
-router.get("/studentProfile/:studentId", isLoggedIn, tutorController.getStudent);
+// router.get("/studentProfile/:studentId", isLoggedIn, tutorController.getStudent);
 
 
 //GET: Go to Notes page: Get route using handlebars
