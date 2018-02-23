@@ -26,10 +26,6 @@ router.get("/recentTutor/:student", teacherController.getTutorMessages);
 //GET - Most recent 5 teacher messages/notes from the messages table
 router.get("/recentTeacher/:student", teacherController.getTeacherMessages);
 
-
-
-
-
 //GET - All notes from the messages table
 router.get("/api/messages/:student", teacherController.allMessages);
 
@@ -43,5 +39,5 @@ router.patch("/:messageId", teacherController.tutorRead);
 router.patch("/:messageId", teacherController.teacherRead);
 
 //Messages
-//POST - Create a new teacher message (student name, date, length of session, message, next topics to cover);
-//this will be similar to the post above when that is corrected
+//POST - Create a new teacher message 
+router.post("/studentMessage/:student", teacherController.postToStudent);
