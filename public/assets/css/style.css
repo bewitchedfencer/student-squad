@@ -108,13 +108,19 @@ top: 75px;
     top: 590px;
 }
 
-.loginButton {
+#loginButton {
     position: absolute;
     width: 203px;
     left: 45vw;
     top: 20vh;
 }
 
+#signupButton {
+    position: absolute;
+    width: 203px;
+    left: 45vw;
+    top: 30vh;
+}
 #studentCard {
     left: 15px;
     width: 275px;
