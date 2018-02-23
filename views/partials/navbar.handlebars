@@ -5,10 +5,17 @@
         </p>
         <ul class="menu-list">
             <p>test</p>
-            {{!-- each loop for students --}} {{#each students}}
-            
-            <li data-id={{id}}>{{name}}</li>
-            {{/each}}
+            {{#if teacher}}
+                {{#each classes}}
+                <li data-id={{id}}>{{name}}</li>
+                {{/each}}
+            {{/if}}
+            {{!-- each loop for students --}}
+            {{#if tutor}}
+                {{#each students}}
+                    <li data-id={{id}}>{{name}}</li>
+                {{/each}}
+            {{/if}}
         </ul>
     </aside>
 </div>
