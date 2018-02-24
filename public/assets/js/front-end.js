@@ -21,6 +21,10 @@ $("#allMessages").on("click", function (event) {
     event.preventDefault();
     $("#allMessageModal").addClass("is-active");
 });
+$("#addStudentBtn").on("click", function (event) {
+    event.preventDefault();
+    $("#newStudent").addClass("is-active");
+});
 //Closes modals in all pages, with the .modal-background being built into Bulma
 //and the id #modalClose attached to each individual modal delete button
 $(".modal-background").on("click", function () {
