@@ -13,6 +13,7 @@
             <a class="button is-primary" id="addStudent" href="">Add Student</a>
 </div>
 {{!-- for each unread Message --}}
+{{!-- Jeff - only display a number (1 to 5), message, author, time, and maybe an icon that can be clicked for each message. On click, modal populates with message body. On close, that message is changed to read --}}
 {{#each messages}}
     {{#unless tutor_read}}
     {{!-- Builds a message element --}}

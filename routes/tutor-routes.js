@@ -16,35 +16,15 @@ router.patch("/addStudent/:studentId", isLoggedIn, tutorController.addStudent);
 //GET: View the student profile that was clicked - will send student data to handlebars page
 router.get("/studentProfile/:studentId", isLoggedIn, tutorController.studentProfile);
 
+router.post("/addMessage/:studentId", isLoggedIn, tutorController.addMessage);
 
 //GET: Go to Notes page: Get route using handlebars
-
-
-//STUDENT PROFILE (Tutor View and Teacher View)
-//GET - Most recent 5 tutor messages/notes from the messages table
-
-//GET - Most recent 5 teacher messages/notes from the messages table
-
-//GET - All tutor notes from the messages table
-
-//GET - All teacher notes from the messages table
+router.patch("/readMessage/:messageId", isLoggedIn, tutorController.tutorRead)
+;
 
 //PATCH - Update/edit a message from the messages table
 
-//PATCH messages - Change to read (teacher)
-// router.patch("/teacherRead/:messageId", teacherController.teacherRead);
-//GET - Notes / Landing Page (HTML Routes)
 
-//Messages
-//POST - Create a new tutor message (student name, date, length of session, message, next topics to cover);
-
-//Get Pages: Student profile, landing page (HTML Routes)
-
-//TEACHER LANDING PAGE
-
-//POST: Send message to entire class/classes
-
-//GET: Get list of classses 
 
 //Get: list of students in each class - when user clicks on class, generate dropdown with list
 function isLoggedIn(req, res, next) {
