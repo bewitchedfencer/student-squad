@@ -5,6 +5,10 @@ var db = require("../models/");
 var teacherController = require("../controllers/teacher-controller.js")
 //TEACHER LANDING PAGE
 
+//going to the teacher view
+router.get("/teacherView", isLoggedIn, teacherController.teacherHome);
+
+
 //POST: Send message to entire class/classes
 router.post("/classMessage", teacherController.postToClasses);
 

@@ -1,4 +1,12 @@
+var db = require("../models/");
+var Sequelize = require('sequelize');
 var exports = module.exports = {};
+
+exports.teacherHome = function (req, res) {
+    console.log("teacherHome!")
+    console.log(req.user);
+    var teacher = req.user
+};
 
 //gets class data for the teacher user
 exports.getClassrooms = function (req, res) {

@@ -14,7 +14,7 @@ router.post("/newUser", passport.authenticate('local-signup', {
         res.redirect("/tutorView");
 
     } else if (req.user.user_type == 'teacher') {
-        res.redirect("/teacherview")
+        res.redirect("/teacherView")
     }
 });
 
@@ -27,7 +27,7 @@ router.post("/userLogin", passport.authenticate('local-signin', {
         res.redirect("/tutorView");
 
     } else if (req.user.user_type == 'teacher') {
-        res.redirect("/teacherview")
+        res.redirect("/teacherView")
     }
 
 });
