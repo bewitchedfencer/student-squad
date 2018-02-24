@@ -103,12 +103,16 @@ function getClassrooms() {
 //this is for posting to an entire class or multiple classes
 function postNewClassMessage() {
     var classChoices = [];
-    //add the classes checked off to the above array. 
-    //how do we get this to the backend? Add it to the object? Yes
-    //add the code for adding the classes to the array
+    //Definitely took this from stackoverflow
+    $("#input:checkbox").each(function(){
+        var $this = $(this);
+        if ($this.is(":checked")){
+            classChoices.push($this.attr("id"))
+        }
+    });
     var author = $this.TeacherId;
     var authorType = "Teacher";
-    var text = "FillerText" //jeff, add the box where the text is grabbed;
+    var text = $("#classMessage") 
     var tutor_read = false;
     var teacher_read = true;
     var newClassPost = {
