@@ -6,13 +6,9 @@
         <button class="button is-primary" id="logout">Log Out</button>
         <ul class="menu-list">
           
-            
-                {{#each classroom}}
-                <li data-id={{id}}><button class="button classBtn is-primary">{{name}}</button></li>
-                {{/each}}
+
             {{!-- each loop for students --}}
-        
-           
+                  
                 {{#each students}}
                     <li ><button class="button studentBtn is-primary" data-id="{{id}}">{{first_name}} {{last_name}}, {{grade}}</button></li>
                 {{/each}}
