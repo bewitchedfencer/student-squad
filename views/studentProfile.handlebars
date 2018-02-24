@@ -31,6 +31,7 @@
     </div>
   </div>
   <footer class="card-footer">
+    {{!-- Need to add an attribute or data id that equals this student's id, so message can be tied to the correct student in the db --}}
     <button class="button is-info msgbtn" id="messageButton">Add a message</button>
     <button class="button is-info msgbtn" id="allMessages">View All Messages</button>
   </footer>
@@ -71,7 +72,7 @@
       <button class="delete" aria-label="close" id="modalClose"></button>
     </header>
     <section class="modal-card-body">
-      <textarea class="textarea" placeholder="Type your message here!" rows="10"></textarea>
+      <textarea class="textarea tutorMessage" placeholder="Type your message here!" rows="10"></textarea>
       <br>
       <input type="submit" id="sendMessage" class="button is-primary" value="Send">
     </section>

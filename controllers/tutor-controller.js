@@ -41,23 +41,12 @@ exports.tutorHome = function (req, res) {
                 var unreadMsg = {
                     messages
                 };
-
-
                 console.log(unreadMsg.messages[0].text);
                 res.render('tutorView', studentObj, unreadMsg);
             })
-
-
-
-
         }
-
-
-        //find all messages from the message table that have a student Id = one 
         //of the studentObj.students.id and status is tutorUnread, false
     });
-
-
 };
 
 //add a student to this tutor
@@ -126,21 +115,34 @@ exports.studentProfile = function (req, res) {
     })
 }
 
-
-
-
 //Add a message to the database for this student
 
+exports.addMessage = function (req, res) {
+    var studentId = req.params.studentId;
+    var tutor = req.user
+    var authorName = ` ${tutor.first_name} ${tutor.last_name}`;
+
+    db.Message.create({
+        author: authorName,
+        authorType: tutor.userType,
+        text: req.body,
+        tutor_read: true,
+        teacher_read: false,
+        StudentId: studentId
+    }).then(function (message) {
+        if (err) throw err;
+        console.log("New message added for this student");
+        res.redirect("studentProfile/" + message.StudentId); //Reload this student's profile 
+    })
+}
+
+//Tutor read a Message
 
 
-//Retrieve all messages that are unread
-
-//teacher read a tutor's message
-
-exports.teacherRead = function (req, res) {
+exports.tutorRead = function (req, res) {
     var messageID = req.params.messageId;
     db.Message.update({
-        teacher_read: true,
+        tutor_read: true,
         where: {
             messageId: messageID
         }
@@ -149,3 +151,7 @@ exports.teacherRead = function (req, res) {
         redirect.reload();
     });
 };
+
+
+
+//teacher read a tutor's message

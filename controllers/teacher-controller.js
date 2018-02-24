@@ -156,18 +156,19 @@ exports.getStudentsInClass = function (req, res) {
         });
     };
 
-    exports.tutorRead = function (req, res) {
-        var messageID = req.params.messageId;
-        db.Message.update({
-            tutor_read: true,
-            where: {
-                messageId: messageID
-            }
-        }).then(function (err) {
-            if (err) throw err;
-            redirect.reload();
-        });
-    };
+
+exports.teacherRead = function (req, res) {
+    var messageID = req.params.messageId;
+    db.Message.update({
+        teacher_read: true,
+        where: {
+            messageId: messageID
+        }
+    }).then(function (err) {
+        if (err) throw err;
+        redirect.reload();
+    });
+};
 
     exports.postToStudent = function (req, res) {
         var student = req.params.student;

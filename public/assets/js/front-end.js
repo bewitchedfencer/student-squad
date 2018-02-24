@@ -56,12 +56,24 @@ $("#addStudent").on("click", function () {
 
 $(".studentBtn").on("click", function (event) {
     event.preventDefault();
-    var studentId = $(this).data("id")
+    var studentId = $(this).data("id");
     $.ajax("/studentProfile" + studentId, {
         type: "GET"
     }).then(function(response) {
         console.log(`Profile for ${response.first_name} retrieved!`);
 
+    })
+});
+
+$("#messageButton").on("click", function(event) {
+
+    event.preventDefault(); 
+    var studentId = $(this).data("id");
+    var newMessage = $(".tutorMessage").val().trim();   
+    
+    $.ajax("/addMessage" + studentId, {
+        type: "POST",
+        data: newMessage
     })
 })
 
