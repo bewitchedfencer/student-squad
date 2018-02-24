@@ -10,15 +10,15 @@ router.get("/", function(req, res) {
 });
 
 //Logged in Tutor
-router.get("/dashboard", isLoggedIn, function(req, res) {
-    console.log(req.body);
-    res.render("dashboard");
-});
-// tutor view test route
-router.get("/tutorview", function(req,res){
-    console.log(req.body);
-    res.render("tutorView");
-})
+// router.get("/dashboard", isLoggedIn, function(req, res) {
+//     console.log(req.body);
+//     res.render("dashboard");
+// });
+// // tutor view test route
+// router.get("/tutorview", function(req,res){
+//     console.log(req.body);
+//     res.render("tutorview");
+// })
 //student profile test route
 router.get("/studentprofile", function(req,res){
     console.log(req.body);
@@ -32,17 +32,6 @@ router.get("/logout", function(req, res) {
 
 });
 
-//If user has been logged out, redirects to the home page instead of hasboard
-function isLoggedIn(req, res, next) {
 
-    console.log(req.body);
-    if (req.isAuthenticated()) {
-        console.log("logged in!");
-        return next();
-    } 
-    console.log("Not authenticated!")
-
-    res.redirect('/');
-};
 
 module.exports = router;

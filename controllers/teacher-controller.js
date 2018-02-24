@@ -1,18 +1,27 @@
+var db = require("../models/");
+var Sequelize = require('sequelize');
 var exports = module.exports = {};
 
+exports.teacherHome = function (req, res) {
+    console.log("teacherHome!")
+    console.log(req.user);
+    var teacher = req.user
+};
+
+//gets class data for the teacher user
 exports.getClassrooms = function (req, res) {
-    var teacher = $this.teacherId;
     db.Classroom.findAll({
         where: {
-            teacherId: teacher
+            teacherId: req.teacher
         }
     }).then(function (results) {
-        var hdbsObj = {
-            classes: results
+        //creating an object to send to handlebars
+        var navbar = {
+            navbar: results
         };
         console.log(hdbsObj);
         //update with correct handlebars page
-        res.render("index", hdbsObj)
+        res.render("teacherView", navbar);
     });
 };
 
@@ -73,7 +82,7 @@ exports.getStudentsInClass = function (req, res) {
                 classroom_code: classroomCode
             }
         }).then(function () {
-            res.json("/");
+            res.send("Class added to teacher user.");
         });
     };
 
@@ -94,6 +103,7 @@ exports.getStudentsInClass = function (req, res) {
                     Messages: results
                 };
                 //put the correct handlebars file
+                //what is the correct file here?
                 res.render("tutorRecentMessages", hdbsObj)
             });
     };
@@ -115,6 +125,7 @@ exports.getStudentsInClass = function (req, res) {
                     Messages: results
                 };
                 //put the correct handlebars file
+                //What is the correct file here?
                 res.render("teacherRecentMessages", hdbsObj)
             });
     };
@@ -127,6 +138,7 @@ exports.getStudentsInClass = function (req, res) {
             }
         }).then(function (results) {
             //update with correct handlebars template
+            //What is the correct file here?
             res.render("index", results);
         });
     };
@@ -148,18 +160,6 @@ exports.getStudentsInClass = function (req, res) {
         var messageID = req.params.messageId;
         db.Message.update({
             tutor_read: true,
-            where: {
-                messageId: messageID
-            }
-        }).then(function (err) {
-            if (err) throw err;
-            redirect.reload();
-        });
-    };
-    exports.teacherRead = function (req, res) {
-        var messageID = req.params.messageId;
-        db.Message.update({
-            teacher_read: true,
             where: {
                 messageId: messageID
             }

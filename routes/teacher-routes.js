@@ -5,17 +5,22 @@ var db = require("../models/");
 var teacherController = require("../controllers/teacher-controller.js")
 //TEACHER LANDING PAGE
 
+//going to the teacher view
+router.get("/teacherView", isLoggedIn, teacherController.teacherHome);
+
+
 //POST: Send message to entire class/classes
-router.post("/classMessage/", teacherController.postToClasses);
+router.post("/classMessage", teacherController.postToClasses);
 
 //GET: Get list of classses 
 router.get("/classes", teacherController.getClassrooms);
 
 //Get: list of students in each class - when user clicks on class, generate dropdown with list
-router.get("/:classId/", teacherController.getStudentsInClass);
+router.get("/classes/:classId", teacherController.getStudentsInClass);
 
 //PATCH: add a class to the teacher (AKA, add teacher id to class)
-router.patch("/addClass/", teacherController.addClass)
+router.patch("/addClass", teacherController.addClass)
+
 //Get: Go to a student's profile
 router.get("/studentProfile/:student", teacherController.getStudent);
 
@@ -30,14 +35,26 @@ router.get("/recentTeacher/:student", teacherController.getTeacherMessages);
 router.get("/api/messages/:student", teacherController.allMessages);
 
 //PATCH - Update/edit a message from the messages table
-router.patch("/:messageId", teacherController.editMessage);
+router.patch("/editMessage/:messageId", teacherController.editMessage);
 
 //PATCH messages - Change to read (tutor)
-router.patch("/:messageId", teacherController.tutorRead);
-
-//PATCH messages - Change to read (teacher)
-router.patch("/:messageId", teacherController.teacherRead);
+router.patch("/tutorRead/:messageId", teacherController.tutorRead);
 
 //Messages
 //POST - Create a new teacher message 
 router.post("/studentMessage/:student", teacherController.postToStudent);
+
+
+function isLoggedIn(req, res, next) {
+    
+        
+        if (req.isAuthenticated()) {
+            console.log("logged in!");
+            // console.log(res);
+            return next();
+        }
+        console.log("Not authenticated!")
+        res.redirect('/');
+    };
+    
+    module.exports = router;

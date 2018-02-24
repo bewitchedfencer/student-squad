@@ -2,34 +2,87 @@
 {{> navbar}}
 {{!-- Insert tabs partial --}}
 <div class="column">
-{{> tutortabs}}
+  {{#if teacher}}
+    {{> teachertabs}}
+  {{else}}
+    {{> tutortabs}}
+  {{/if}}
 <div class="columns">
 {{!-- Card object with Student's information --}}
+<div class="column is-7">
 <div class="card" id="studentCard">
   <header class="card-header">
     <p class="card-header-title">
-      {{studentname}}
+      {{first_name}} {{last_name}}
     </p>
   </header>
   <div class="card-content">
     <div class="content">
-     <p>Grade:{{grade}}</p>
-      <p>Date of Birth:{{dob}}</p>
+      <p>Grade:{{grade}}</p>
+      <p>Primary Contact:</p>
+      <p>{{primary_contact_first}} {{primary_contact_last}}</p>
+        <p>Phone: {{primary_contact_phone}}</p>
+        <p>Email: {{primary_contact_email}}</p>
     </div>
   </div>
   <footer class="card-footer">
-    <p>Primary Contact:</p>
-      <p>{{contactname}} {{contactnumber}}</p>
+    <button class="button is-info msgbtn" id="messageButton">Add a message</button>
+    <button class="button is-info msgbtn" id="allMessages">View All Messages</button>
   </footer>
 </div>
-{{!-- Teacher's 5 most recent messages partial --}}
- {{#each messages}}
- {{!-- If the message is from a teacher --}}
-  {{#if teachermesage}}
+{{!-- Tutor's 5 most recent messages partial --}}
+<div class="column is-5">
+<h1 class="subtitle">Tutor's Notes</h1>
+
+{{#each messages}}
+ {{!-- If the message is from a tutor --}}
+  {{#if tutormessage}}
     {{> messages}}
-    {{!-- loop eacher messages --}}
-{{!-- tutor's 5 most recent messages partial --}}
+  {{/if}}
+{{/each}}
 </div>
 </div>
 <div class="column">
-        </div>
+<h1 class="subtitle">Teacher's Notes</h1>
+{{!-- Teachers 5 most recent messages partial --}}
+ {{#each messages}}
+ {{!-- If the message is from a tutor --}}
+  {{#if teachermessage}}
+    {{> messages}}
+  {{/if}}
+{{/each}}
+</div>
+
+</div>
+{{!-- Add a new message modal --}}
+<div class="column"></div>
+
+<div class="modal" id="messageModal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Add a new message</p>
+      <button class="delete" aria-label="close" id="modalClose"></button>
+    </header>
+    <section class="modal-card-body">
+      <textarea class="textarea" placeholder="Type your message here!" rows="10"></textarea>
+      <br>
+      <input type="submit" id="sendMessage" class="button is-primary" value="Send">
+    </section>
+  </div>
+</div>
+{{!-- View All Messages modal --}}
+<div class="modal" id="allMessageModal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">All Messages</p>
+      <button class="delete" aria-label="close" id="modalClose"></button>
+    </header>
+    <section class="modal-card-body">
+      {{#each messages}}
+        {{> messages}}
+      {{/each}}
+    </section>
+  </div>
+</div>

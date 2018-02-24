@@ -2,61 +2,19 @@ var express = require("express");
 var router = express.Router();
 var db = require("../models/");
 var passport = require("passport");
+var tutorController = require("../controllers/tutor-controller.js");
 
 //REGISTER NEW TUTOR
 
-//Request received to register a new tutor
-// router.post("/newTutor", passport.authenticate('local-signup', {
-//     successRedirect: '/dashboard',
-//     failureRedirect: '/'
-// }));
-
-
-//Authenticate User
-// router.get("/userLogin", passport.authenticate('local-signin', {
-//     successRedirect: '/dashboard',
-//     failureRedirect: '/'
-// })
-// );
-
-//TUTOR HOME PAGE
-
-
-// Displayed unread messages
-
-
-//GET ROUTE - Displays students assigned to logged in tutor on navigation bar
-// router.get("/", function (req, res) {
-//     db.Student.findAll({
-//         where: {
-//             tutor_id: req.body.userId //Determine how to store logged in tutor's id
-//         }
-//     }).then(function (students) {
-//         res.json(students)
-//     })
-// });
+//
+router.get("/tutorView", isLoggedIn, tutorController.tutorHome)
 
 //PATCH ROUTES - Updates the tutor_id field for student with code entered
-router.patch("/newStudent", function (req, res) {
-    var studentCode = req.body.studentCode;
-    studentCode = studentCode.toLowerCase.trim();
-    var tutorCode = req.body.tutorCode; //determine how to save the id for this user
-
-    db.Student.update({
-        tutor_id: tutorCode
-    }, {
-        where: {
-            unique_id: studentCode
-        }
-    }).then(function () {
-        res.json("/");
-    });
-});
+router.patch("/addStudent/:studentId", isLoggedIn, tutorController.addStudent);
 
 
-//Get 
 //GET: View the student profile that was clicked - will send student data to handlebars page
-
+router.get("/studentProfile/:studentId", isLoggedIn, tutorController.studentProfile);
 
 
 //GET: Go to Notes page: Get route using handlebars
@@ -73,8 +31,8 @@ router.patch("/newStudent", function (req, res) {
 
 //PATCH - Update/edit a message from the messages table
 
-//PATCH messages - Change to read (tutor)
-
+//PATCH messages - Change to read (teacher)
+// router.patch("/teacherRead/:messageId", teacherController.teacherRead);
 //GET - Notes / Landing Page (HTML Routes)
 
 //Messages
@@ -89,6 +47,16 @@ router.patch("/newStudent", function (req, res) {
 //GET: Get list of classses 
 
 //Get: list of students in each class - when user clicks on class, generate dropdown with list
+function isLoggedIn(req, res, next) {
 
+    
+    if (req.isAuthenticated()) {
+        console.log("logged in!");
+        // console.log(res);
+        return next();
+    }
+    console.log("Not authenticated!")
+    res.redirect('/');
+};
 
 module.exports = router;
