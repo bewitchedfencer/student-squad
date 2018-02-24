@@ -32,7 +32,7 @@ router.get("/studentProfile/:studentId", isLoggedIn, tutorController.studentProf
 //PATCH - Update/edit a message from the messages table
 
 //PATCH messages - Change to read (teacher)
-router.patch("/teacherRead/:messageId", teacherController.teacherRead);
+// router.patch("/teacherRead/:messageId", teacherController.teacherRead);
 //GET - Notes / Landing Page (HTML Routes)
 
 //Messages
