@@ -1,12 +1,12 @@
 {{!-- Insert navbar partial --}}
-{{> navbar}}
+{{> tutorNavbar}}
 {{!-- Insert tabs partial --}}
 <div class="column">
-  {{#if teacher}}
+  {{!-- {{#if teacher}}
     {{> teachertabs}}
-  {{else}}
+  {{else}} --}}
     {{> tutortabs}}
-  {{/if}}
+  {{!-- {{/if}} --}}
 <div class="columns">
 {{!-- Card object with Student's information --}}
 <div class="column is-7">
@@ -17,7 +17,6 @@
        {{!-- not sure if should be reference this way, or as this.first_name or student.first_name --}}
       {{student.first_name}}  {{student.last_name}}
       
-
 
     </p>
   </header>
@@ -42,22 +41,22 @@
 
 {{!-- This is being sent as 2 separate properties of an object that can be referenced as tutorMessages and teacherMessages without 
 validatnig if tutor/teacher is true --}}
-{{#each messages}}
+{{#each tutorMsgObj}}
  {{!-- If the message is from a tutor --}}
-  {{#if tutormessage}}
+  {{!-- {{#if tutormessage}} --}}
     {{> messages}}
-  {{/if}}
+  {{!-- {{/if}} --}}
 {{/each}}
 </div>
 </div>
 <div class="column">
 <h1 class="subtitle">Teacher's Notes</h1>
 {{!-- Teachers 5 most recent messages partial --}}
- {{#each messages}}
+ {{#each teacherMsgObj}}
  {{!-- If the message is from a tutor --}}
-  {{#if teachermessage}}
+  {{!-- {{#if teachermessage}} --}}
     {{> messages}}
-  {{/if}}
+  {{!-- {{/if}} --}}
 {{/each}}
 </div>
 

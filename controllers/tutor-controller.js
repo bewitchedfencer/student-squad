@@ -97,10 +97,10 @@ exports.studentProfile = function (req, res) {
                     teacherMessages.push(message);
                 }
             });
-            console.log(teacherMessages);
-            console.log(tutorMessages);
+            // console.log(teacherMessages);
+            // console.log(tutorMessages);
             res.render("studentProfile", {
-                studentObj: student,
+                student: student,
                 tutorMsgObj: tutorMessages,
                 teacherMsgObj: teacherMessages
             });
