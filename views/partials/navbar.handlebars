@@ -7,7 +7,7 @@
             <p>test</p>
             {{#if teacher}}
                 {{#each classes}}
-                <li data-id={{id}}>{{name}}</li>
+                <li data-id={{id}}><button class="button classBtn is-primary">{{name}}</button></li>
                 {{/each}}
             {{/if}}
             {{!-- each loop for students --}}
@@ -15,7 +15,7 @@
         {{!-- Can these be styled as buttons, if not already. And they need a studentBtn class that can be used for click events --}}
             {{#if tutor}}
                 {{#each students}}
-                    <li data-id={{id}}>{{first_name}} {{last_name}}, {{grade}}</li>
+                    <li data-id={{id}}><button class="button studentBtn is-primary">{{first_name}} {{last_name}}, {{grade}}</button></li>
                 {{/each}}
             {{/if}}
         </ul>
