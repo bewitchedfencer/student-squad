@@ -30,6 +30,14 @@ $("#modalClose").on("click", function () {
     $(".modal").removeClass("is-active");
 })
 
+
+//HomePage
+    //Needs on click event for sign up form to:
+        //Clear the input forms on the click
+        //confirm data was entered, passwords match, are atleast 6 characters long, before sending
+        //post request to newUser (front end validation). Once added, remove automatic post event from form and add inside of onclick event.
+        
+
 //When tutor clicks Add Student with code entered, :
 $("#addStudent").on("click", function () {
     var studentCode = $("#studentCode").val().trim().lowercase();
@@ -40,6 +48,7 @@ $("#addStudent").on("click", function () {
     })
 });
 
+//When student button clicked, get that student's profile
 $(".studentBtn").on("click", function (event) {
     event.preventDefault();
     var studentId = $(this).data("id");
@@ -50,6 +59,8 @@ $(".studentBtn").on("click", function (event) {
 
     })
 });
+
+//To add a new message on student's profile:
 
 $("#messageButton").on("click", function(event) {
     event.preventDefault(); 
@@ -63,12 +74,7 @@ $("#messageButton").on("click", function(event) {
 });
 
 
-//Capture text input and save as studentCode
-//Patch request to /addstudent, studentCode (will reload page once added)
-
-//When tutor clicks view profile:
-//Capture data value of clicked student (this is the student's Id)
-//get request: studentProfile/studentId
+//
 //--------------------------------------------------------Lisa Notes end
 
 
