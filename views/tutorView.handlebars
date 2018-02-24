@@ -6,7 +6,7 @@
 <div class="columns">
 <div class="column is-1"> 
     {{!-- Jeff - add #student Code input and label to accept student-code from tutor --}}
-            <a class="button is-primary" id="addStudent" href="">Add Student</a>
+            <a class="button is-primary" id="addStudentBtn" href="">Add Student</a>
 </div>
 {{!-- for each unread Message --}}
 {{!-- Jeff - only display a number (1 to 5), message, author, time, and maybe an icon that can be clicked for each message. On click, modal populates with message body. 
@@ -34,21 +34,21 @@ On close, that message is changed to read --}}
 {{/each}}
 </div>
 </div>
-<div class="modal">
+<div class="modal" id="newStudent">
     <div class="modal-background"></div>
     <div class="modal-card">
         <header class="modal-card-head">
-            <p>Add a Student</p>
-        <button class="delete modalClose" area-label="close"></button>
+            <p class="modal-card-title">Add a Student</p>
+        <button class="delete" id="modalClose" area-label="close"></button>
         </header>
         <section class="modal-card-body">
             <div class="field">
                 <label class="label">Enter the Student's code</label>
                 <div class="control">
                     <input class="input is-info" type="text" placeholder="Student Code">
+                    <input class="button is-info" type="submit" value="Submit" id="addStudent">
                 </div>
             </div>
-            <input type="submit" class="button is-info" value="Submit" id="addStudent">
         </section>
     </div>
 </div>

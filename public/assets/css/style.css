@@ -49,8 +49,8 @@ body {
     padding: 20px 0px
 }
 
-#addStudent {
-    /* margin: 10% 0px; */
+#addStudentBtn {
+    margin: 10% 0px;
     position: absolute;
 width: 203px;
 height: 47px;
