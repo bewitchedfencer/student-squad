@@ -22,7 +22,8 @@
                             Take the stress out of student management
                         </p>
                         <p class="subtitle">
-                            Tutors are able to communicate with teachers, document interactions, as well as see what's happening in class.
+                            Tutors are able to communicate with teachers about a particular student, view what students are working on in class, and
+                            document their tutor sessions.
                         </p>
                     </div>
                 </div>
@@ -30,9 +31,9 @@
             <div class="column card2">
                 <div class="card">
                     <div class="card-content">
-                        <p class="title">Teachers can stay informed on their student's progress</p>
+                        <p class="title">Teachers can get updates from tutors to monitor student's progress</p>
                         <p class="subtitle">
-                            Teachers can send information on the class' assignments and what's coming up soon.
+                            Teachers can send information on the class' lesson plans so tutors know what to focus on to help students improve.
                         </p>
                     </div>
                 </div>
@@ -41,88 +42,89 @@
                 <div class="card">
                     <div class="card-content">
                         <p class="title">Coming Soon...</p>
-                        <p class="subtitle">More features!</p>
+                        <p class="subtitle">Parents will be able to log in and view communications about their child from tutors and teachers,
+                            send messages, and a request for contact!</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-{{!-- Modal for signup --}}
-<div class="modal" id="signupModal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">Sign Up</p>
-            <button class="delete" id="modalClose" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-           <form id="signup" name="signup" method="post" action="/newUser">
+    {{!-- Modal for signup --}}
+    <div class="modal" id="signupModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Sign Up</p>
+                <button class="delete" id="modalClose" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <form id="signup" name="signup" method="post" action="/newUser">
 
-            <label for="userType">Please select your user type:</label>
-            <br>
-            <input type="radio" name="userType" value="tutor"> Tutor
-            <br>
-            <input type="radio" name="userType" value="teacher"> Teacher
-            <br>
-            <input type="radio" name="userType" value="parent" disabled> Parent -
-            <i>Coming Soon!</i>
-            <br>
+                    <label for="userType">Please select your user type:</label>
+                    <br>
+                    <input type="radio" name="userType" value="tutor"> Tutor
+                    <br>
+                    <input type="radio" name="userType" value="teacher"> Teacher
+                    <br>
+                    <input type="radio" name="userType" value="parent" disabled> Parent -
+                    <i>Coming Soon!</i>
+                    <br>
+                    <label for="firstName">First Name</label>
+                    <input name="firstName" type="text" />
 
-            <label for="email">Email Address</label>
-            <input class="text" name="email" type="email" />
-            <br>
+                    <label for="lastName">Last Name</label>
+                    <input name="lastName" type="text" />
+                    <br>
+                    <label for="email">Email Address</label>
+                    <input class="text" name="email" type="email" />
+                    <br>
+                    <label for="password">Password</label>
+                    <input name="password" type="password" />
+                    <br>
+                    <label for="passwordRetype">Retype your password</label>
+                    <input name="passwordRetype" type="password" />
+                    <br> {{!-- Make these togglable --}}
 
-            <label for="firstName">First Name</label>
-            <input name="firstName" type="text" />
-
-            <label for="lastName">Last Name</label>
-            <input name="lastName" type="text" />
-            <br>
-            <label for="password">Password</label>
-            <input name="password" type="password" /> 
-            <br>
-            {{!-- Make these togglable --}}
-            <label for="agency">Agency</label>
-            <input name="agency" type="text"> 
-            {{!-- Make this a toggle --}}
-            <label for="subject">Subject</label>
-            <select name="subject" form="signup">
-                <option value="math">Math</option>
-                <option value="science">Science</option>
-                <option value="lang">Language Arts</option>
-                <option value="lang">Social Studies</option>
-                <option value="forlang">Foriegn Language</option>
-            </select>
-            <br>
-            <input class="button is-info is-small" type="submit" value="Sign Up" />
-        </form>
-        </section>
+                    <label for="agency">Agency</label>
+                    <input name="agency" type="text"> {{!-- Make this a toggle --}}
+                    <label for="subject">Subject</label>
+                    <select name="subject" form="signup">
+                        <option value="" disabled selected>Select your subject</option>
+                        <option value="math">Math</option>
+                        <option value="science">Science</option>
+                        <option value="lang">Language Arts</option>
+                        <option value="lang">Social Studies</option>
+                        <option value="forlang">Foriegn Language</option>
+                    </select>
+                    <br>
+                    <input class="button is-info is-small" type="submit" value="Sign Up" />
+                </form>
+            </section>
+        </div>
     </div>
-</div>
 
 
-{{!-- Sign in modal --}}
-<div class="modal" id="loginModal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-        <header class="modal-card-head">
-            <p class="modal-card-title">Log In</p>
-            <button class="delete" id="modalClose" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-            <br>
-        <form id="signin" name="signin" method="post" action="/userLogin">
-            <label for="email">Email Address</label>
-            <input class="text" name="email" type="email" />
-            <label for="password">Password</label>
-            <input name="password" type="password" />
+    {{!-- Sign in modal --}}
+    <div class="modal" id="loginModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Log In</p>
+                <button class="delete" id="modalClose" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <br>
+                <form id="signin" name="signin" method="post" action="/userLogin">
+                    <label for="email">Email Address</label>
+                    <input class="text" name="email" type="email" />
+                    <label for="password">Password</label>
+                    <input name="password" type="password" />
 
 
-            <input class="button is-info" type="submit" value="Log In" />
+                    <input class="button is-info" type="submit" value="Log In" />
 
 
-        </form>
-        </section>
+                </form>
+            </section>
+        </div>
     </div>
-</div>
-    

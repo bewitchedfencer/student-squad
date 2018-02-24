@@ -30,20 +30,6 @@ $("#modalClose").on("click", function () {
     $(".modal").removeClass("is-active");
 })
 
-//
-
-
-//HOMEPAGE - Lisa Notes below this line--------------------------
-
-//When user enters data and clicks Register (Following is currently handled by a form)
-//Confirm required fields are inputted
-//Checks that password is more than 6 characters 
-
-//Sends post request to /newuser with userData object
-
-
-//TUTOR HOME PAGE
-
 //When tutor clicks Add Student with code entered, :
 $("#addStudent").on("click", function () {
     var studentCode = $("#studentCode").val().trim().lowercase();
@@ -66,7 +52,6 @@ $(".studentBtn").on("click", function (event) {
 });
 
 $("#messageButton").on("click", function(event) {
-
     event.preventDefault(); 
     var studentId = $(this).data("id");
     var newMessage = $(".tutorMessage").val().trim();   
@@ -75,7 +60,7 @@ $("#messageButton").on("click", function(event) {
         type: "POST",
         data: newMessage
     })
-})
+});
 
 
 //Capture text input and save as studentCode

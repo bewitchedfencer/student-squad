@@ -26,7 +26,7 @@ router.patch("/readMessage/:messageId", isLoggedIn, tutorController.tutorRead)
 
 
 
-//Get: list of students in each class - when user clicks on class, generate dropdown with list
+//Get: list of students in each class - w hen user clicks on class, generate dropdown with list
 function isLoggedIn(req, res, next) {
 
     
