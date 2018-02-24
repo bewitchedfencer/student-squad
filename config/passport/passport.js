@@ -83,8 +83,8 @@ module.exports = function (passport, user) {
                                     return done(null, newUser);
                                 });
 
-                            };
-                            if (req.body.userType == "teacher") {
+                            }
+                            else if (req.body.userType == "teacher") {
                                 console.log(req.body);
                                 var teacherData = {
                                     first_name: req.body.firstName,

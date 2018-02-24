@@ -150,7 +150,80 @@ function addAClass() {
     });
 };
 
-//function for adding the most recent tutor messages
-function mostRecentTutorMs() {
+//function for adding the most recent tutor and teacher messages
+function mostRecentMessages(){
+    var studentID = 3; //put in code for actual studentID in table
+    $.ajax(`/recentTutor/${studentID}`, {
+        type:'GET',
+    }).then(function(){
+        console.log("Most recent tutor messages are being displayed.");
+        $.ajax(`/recentTeacher/${studentID}`, {
+            type:'GET',
+        }).then(function(){
+            console.log("Most recent tutor messages are being displayed.");
+        });
+    });
+};
 
-}
+//function for displaying all messages relating to a student
+function allTheMessages(){
+    var studentID = 3; //put in code for actual studentID
+    $.ajax(`/api/messages/${studentID}`, {
+        type:'GET',
+    }).then(function(){
+        console.log("All messages are displayed for this student");
+    });
+};
+
+//editing a message relating to a student
+function editAMessage(){
+    var authorID = "Me" //add code to capture the author of the message
+    var messageID = 4; //add code to capture the messsage ID
+    var userForeignKey = "Me" //add code to find the user's name
+    var text = "changed text" //the text is all they can change
+    if(authorID===userForeignKey){
+        $.ajax(`/editMessage/${messageID}`, {
+            type:'PATCH',
+            data:text
+        });
+    }
+    else{
+        console.log("You cannot edit this post.");
+    }
+};
+
+//read a message
+function readMessage(){
+    var messageID = 4; //add code for selected message
+    $.ajax(`/tutorRead/${messageID}`, {
+        type:'PATCH',
+    }).then(function(){
+        console.log(`Message with id ${messageID} has been marked read.`);
+    });
+};
+
+//send a message to a student only
+
+function postNewClassMessage(){
+    var studentID = 4 //add correct code for the student ID
+    var author = $this.TeacherId;
+    var authorType = "Teacher";
+    var text = "FillerText"//jeff, add the box where the text is grabbed;
+    var tutor_read = false;
+    var teacher_read = true;
+    var newStudentPost = {
+        author,
+        authorType,
+        text,
+        tutor_read,
+        teacher_read
+    };
+    $.ajax(`/studentMessage/${studentID}`, {
+        type:"POST",
+        data:newStudentPost
+    }).then(function(){
+        console.log("New message sent to this student");
+        location.reload();
+    });
+};
+
