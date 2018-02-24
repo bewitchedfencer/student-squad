@@ -109,7 +109,7 @@ function postNewClassMessage() {
         if ($this.is(":checked")){
             classChoices.push($this.attr("id"))
         }
-    })
+    });
     var author = $this.TeacherId;
     var authorType = "Teacher";
     var text = $("#classMessage") 
