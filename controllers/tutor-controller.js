@@ -135,8 +135,6 @@ exports.addMessage = function (req, res) {
 }
 
 //Tutor read a Message
-
-
 exports.tutorRead = function (req, res) {
     var messageID = req.params.messageId;
     db.Message.update({
@@ -151,5 +149,16 @@ exports.tutorRead = function (req, res) {
 };
 
 
-
-//teacher read a tutor's message
+//Edit a message
+exports.editMessage = function (req, res) {
+    var messageId = req.params.messageId;
+    db.Message.update({
+        text: req.body.text,
+        where: {
+            id: messageId
+        }
+    }).then(function (err) {
+        if (err) throw err;
+        redirect.reload();
+    });
+};
