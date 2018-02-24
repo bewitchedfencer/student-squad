@@ -8,15 +8,11 @@ var teacherController = require("../controllers/teacher-controller.js")
 //going to the teacher view
 router.get("/teacherView", isLoggedIn, teacherController.teacherHome);
 
-
 //POST: Send message to entire class/classes
-router.post("/classMessage", teacherController.postToClasses);
-
-//GET: Get list of classses 
-router.get("/classes", teacherController.getClassrooms);
+router.post("/classMessage", isLoggedIn, teacherController.postToClasses);
 
 //Get: list of students in each class - when user clicks on class, generate dropdown with list
-router.get("/classes/:classId", teacherController.getStudentsInClass);
+router.get("/classes/:classId", isLoggedIn, teacherController.getStudentsInClass);
 
 //PATCH: add a class to the teacher (AKA, add teacher id to class)
 router.patch("/addClass", teacherController.addClass)

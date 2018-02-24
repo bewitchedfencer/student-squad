@@ -1,17 +1,13 @@
 {{!-- Navbar partial --}}
-{{> navbar}}
+{{> teacherNavbar}}
 {{!-- Tabs partial --}}
 <div class="column">
-{{#if teacher}}
     {{> teachertabs}}
-  {{else}}
-    {{> tutortabs}}
-  {{/if}}
 <div class="columns">
     {{!-- For each class this teacher has, render a checkbox with the class' name. --}}
-    {{#each class}}
-        <label class="checkbox" id={{className}}>
-            <input type="checkbox"> {{className}}
+    {{#each classroom}}
+        <label class="checkbox" id={{name}}>
+            <input type="checkbox"> {{name}}
         </label>
     {{/each}}
     {{!-- Text area for teacher to sent messages --}}
