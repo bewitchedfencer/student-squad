@@ -9,33 +9,25 @@ exports.teacherHome = function (req, res) {
 //gets class data for the teacher user
     db.Classroom.findAll({
         where: {
-            teacherId: req.teacher
+            teacherId: req.TeacherId
         }
     }).then(function (results) {
-        //creating an object to send to handlebars
-        var navbar = {
-            navbar: results
-        };
-        console.log(hdbsObj);
+        //creating an array to store all of the classes
+        var classesForTeacher = [];
+        (results).forEach(function(classroom){
+            classesForTeacher.push(classroom.id);
+        });
+        console.log("classes", classesForTeacher);
+
+       
         //update with correct handlebars page
-        res.render("teacherView", navbar);
+        res.render("teacherView", {navbar:classesForTeacher});
     });
-};
 
-exports.postToClasses = function (req, res) {
-    //make sure the object sent from the front end has properties that match
-    // the message model
-    var newMessage = req.body;
-    db.Message.create({
-        newMessage
-    }).then(function (errors) {
-        if (errors) throw errors;
-        res.send("A new message has been sent to the students in your class!")
-    });
-};
 
+//how are we doing this? How is this getting rendered in handlebars?
 exports.getStudentsInClass = function (req, res) {
-    var classID = req.params.classId;
+    var classID = 4 //attach to some button in html
     db.Student.findAll({
         include: [{
             model: Classroom,
@@ -50,6 +42,20 @@ exports.getStudentsInClass = function (req, res) {
         //check file name is correct
         res.render("studentDropdown", hdbsObj);
     });
+
+exports.postToClasses = function (req, res) {
+    //make sure the object sent from the front end has properties that match
+    // the message model
+    var newMessage = req.body;
+    db.Message.create({
+        newMessage
+    }).then(function (errors) {
+        if (errors) throw errors;
+        res.send("A new message has been sent to the students in your class!")
+    });
+};
+
+
 
     exports.getStudent = function (req, res) {
         var studentID = req.params.student;
