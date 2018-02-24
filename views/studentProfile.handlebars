@@ -13,15 +13,16 @@
 <div class="card" id="studentCard">
   <header class="card-header">
     <p class="card-header-title">
-      {{studentname}}
+      {{first_name}} {{last_name}}
     </p>
   </header>
   <div class="card-content">
     <div class="content">
       <p>Grade:{{grade}}</p>
-      <p>Date of Birth:{{dob}}</p>
       <p>Primary Contact:</p>
-      <p>{{contactname}} {{contactnumber}}</p>
+      <p>{{primary_contact_first}} {{primary_contact_last}}</p>
+        <p>Phone: {{primary_contact_phone}}</p>
+        <p>Email: {{primary_contact_email}}</p>
     </div>
   </div>
   <footer class="card-footer">

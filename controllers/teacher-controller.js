@@ -8,12 +8,12 @@ exports.getClassrooms = function (req, res) {
         }
     }).then(function (results) {
         //creating an object to send to handlebars
-        var hdbsObj = {
-            classes: results
+        var navbar = {
+            navbar: results
         };
         console.log(hdbsObj);
         //update with correct handlebars page
-        res.render("index", hdbsObj)
+        res.render("teacherView", navbar);
     });
 };
 
@@ -95,6 +95,7 @@ exports.getStudentsInClass = function (req, res) {
                     Messages: results
                 };
                 //put the correct handlebars file
+                //what is the correct file here?
                 res.render("tutorRecentMessages", hdbsObj)
             });
     };
@@ -116,6 +117,7 @@ exports.getStudentsInClass = function (req, res) {
                     Messages: results
                 };
                 //put the correct handlebars file
+                //What is the correct file here?
                 res.render("teacherRecentMessages", hdbsObj)
             });
     };
@@ -128,6 +130,7 @@ exports.getStudentsInClass = function (req, res) {
             }
         }).then(function (results) {
             //update with correct handlebars template
+            //What is the correct file here?
             res.render("index", results);
         });
     };
