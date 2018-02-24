@@ -6,10 +6,7 @@ exports.teacherHome = function (req, res) {
     console.log("teacherHome!")
     console.log(req.user);
     var teacher = req.user
-};
-
 //gets class data for the teacher user
-exports.getClassrooms = function (req, res) {
     db.Classroom.findAll({
         where: {
             teacherId: req.teacher
