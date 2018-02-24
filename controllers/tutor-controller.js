@@ -150,3 +150,20 @@ exports.editMessage = function (req, res) {
         redirect.reload();
     });
 };
+
+//get all unread messages
+db.Message.findAll({
+    include:[{
+        model:Student,
+        where:{
+        TutorId:user.TutorId
+        }
+    }]
+}).then(function (results) {
+    var unreadMessages = [];
+    (results).forEach(function(message){
+        if(!teacher_read){
+        unreadMessages.push(message.id);
+    }
+});
+});
