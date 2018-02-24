@@ -13,8 +13,13 @@
             {{!-- each loop for students --}}
         
            
+<<<<<<< HEAD:views/partials/navbar.handlebars
+                {{#each students}}
+                    <li ><button class="button studentBtn is-primary" data-id="{{id}}">{{first_name}} {{last_name}}, {{grade}}</button></li>
+=======
                 {{#each student}}
                     <li data-id={{id}}><button class="button studentBtn is-primary">{{first_name}} {{last_name}}, {{grade}}</button></li>
+>>>>>>> master:views/partials/teacherNavbar.handlebars
                 {{/each}}
 
         </ul>

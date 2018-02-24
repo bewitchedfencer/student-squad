@@ -15,24 +15,27 @@ exports.tutorHome = function (req, res) {
         }
     }).then(function (results) {
 
-            var studentIds = [];
-            
-            (results).forEach(function (student) {
-                studentIds.push(student.id);
+        var studentIds = [];
+
+        (results).forEach(function (student) {
+            studentIds.push(student.id);
+        });
+        console.log(studentIds);
+
+        db.Message.findAll({ //Retreive all messages from the tutor's assigned students that are unread
+            where: {
+                StudentId: {
+                    [Op.or]: studentIds
+                },
+                tutor_read: false
+            }
+        }).then(function (messages) {
+
+            res.render('tutorView', {
+                students: results,
+                unreadMsg: messages
             });
-            console.log(studentIds);
-
-            db.Message.findAll({ //Retreive all messages from the tutor's assigned students that are unread
-                where: {
-                    StudentId: {
-                        [Op.or]: studentIds
-                    },
-                    tutor_read: false
-                }
-            }).then(function (messages) {
-
-                res.render('tutorView', {students: results, unreadMsg: messages});
-            })
+        })
         // }
     });
 };
@@ -71,29 +74,32 @@ exports.studentProfile = function (req, res) {
 
         db.Message.findAll({
             where: {
-                student_id: student.id,
+                StudentId: student.id,
+
             },
             order: [
                 ['createdAt', 'DESC']
             ]
-        }).then(function (tutorMessages) {
-            db.Message.findAll({
-                where: {
-                    student_id: student.id,
-                    authorType: "teacher"
-                },
-                order: [
-                    ['createdAt', 'DESC']
-                ]
-            }).then(function (teacherMessages) {
+        }).then(function (messages) {
 
-                // var messageObj = {
-                //     tutorMessages,
-                //     teacherMessages
-                // };
-                res.render("studentProfile", {studentObj: student, tutorMsgObj: tutorMessages, teacherMsgObj: teacherMessages});
+            var tutorMessages = [];
+            var teacherMessages = [];
+            messages.forEach(function (message) {
+                if (message.authorType == "teacher") {
+                    tutorMessages.push(message);
+                } else if (message.authorType == "tutor") {
 
-            })
+                    teacherMessages.push(message);
+                }
+            });
+            console.log(teacherMessages);
+            console.log(tutorMessages);
+            res.render("studentProfile", {
+                studentObj: student,
+                tutorMsgObj: tutorMessages,
+                teacherMsgObj: teacherMessages
+            });
+
         })
     })
 }
@@ -147,4 +153,3 @@ exports.editMessage = function (req, res) {
         redirect.reload();
     });
 };
-
