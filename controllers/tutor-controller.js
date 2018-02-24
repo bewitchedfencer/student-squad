@@ -19,33 +19,45 @@ exports.tutorHome = function (req, res) {
             students: results
         };
 
-        var studentIds = [];
+        if (studentObj == null) {
 
-        (studentObj.students).forEach(function (student) {
-            studentIds.push(student.id);
-        });
-        console.log(studentIds);
 
-        db.Message.findAll({ //Retreive all messages from the tutor's assigned students that are unread
-            where: {
-                StudentId: {
-                    [Op.or]: studentIds
-                },
-                tutor_read: false
-            }
-        }).then(function (messages) {
-            var unreadMsg = {
-                messages
-            };
+        } else {
+            var studentIds = [];
 
-            console.log(unreadMsg.messages.text);
-            res.render('tutorView', studentObj, unreadMsg);
-        })
+            (studentObj.students).forEach(function (student) {
+                studentIds.push(student.id);
+            });
+            console.log(studentIds);
+
+            db.Message.findAll({ //Retreive all messages from the tutor's assigned students that are unread
+                where: {
+                    StudentId: {
+                        [Op.or]: studentIds
+                    },
+                    tutor_read: false
+                }
+            }).then(function (messages) {
+                var unreadMsg = {
+                    messages
+                };
+
+
+                console.log(unreadMsg.messages[0].text);
+                res.render('tutorView', studentObj, unreadMsg);
+            })
+
+
+
+
+        }
+
+
         //find all messages from the message table that have a student Id = one 
         //of the studentObj.students.id and status is tutorUnread, false
     });
 
-    
+
 };
 
 //add a student to this tutor

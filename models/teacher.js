@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
     // Associate teacher with classes
     Teacher.associate = function (models) {
         Teacher.hasMany(models.Classroom);
-        Teacher.belongsTo(models.user);
+        Teacher.belongsTo(models.User);
 
     };
 
