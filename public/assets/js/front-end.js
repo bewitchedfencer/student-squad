@@ -57,7 +57,8 @@ $("#addStudent").on("click", function (event) {
 $(".studentBtn").on("click", function (event) {
     event.preventDefault();
     var studentId = $(this).data("id");
-    $.ajax("/studentProfile" + studentId, {
+    console.log(studentId);
+    $.ajax("/studentProfile/" + studentId, {
         type: "GET"
     }).then(function(response) {
         console.log(`Profile for ${response.first_name} retrieved!`);
