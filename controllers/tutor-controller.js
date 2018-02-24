@@ -45,14 +45,13 @@ exports.tutorHome = function (req, res) {
         //of the studentObj.students.id and status is tutorUnread, false
     });
 
-    
+
 };
 
 //add a student to this tutor
 exports.addStudent = function (req, res) {
     var studentCode = req.params.studentId;
-    studentCode = studentCode.toLowerCase.trim();
-    var tutor = req.user //determine how to save the id for this user
+    var tutor = req.user;
 
     db.Student.update({
         tutor_id: tutor.id
@@ -60,15 +59,19 @@ exports.addStudent = function (req, res) {
         where: {
             unique_id: studentCode
         }
-    }).then(function () {
-        res.redirect("/tutorView");
+    }).then(function (result) {
+        if (result.changedRows == 0) {
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
     });
 };
 
 //Get "this" student's profile and render
 exports.studentProfile = function (req, res) {
     var studentId = req.params.studentId;
-    var tutor = req.user //determine how to save the id for this user
+    var tutor = req.user
 
     db.Student.findOne({
         where: {
@@ -78,9 +81,40 @@ exports.studentProfile = function (req, res) {
         var studentObj = {
             student
         };
-        res.render("studentProfile", studentObj);
-    });
-};
+
+        db.Message.findAll({
+            where: {
+                student_id: studentObj.student.id,
+                authorType: "tutor"
+            },
+            order: [
+                ['createdAt', 'DESC']
+            ],
+            limit: 5
+        }).then(function (tutorMessages) {
+            db.Message.findAll({
+                where: {
+                    student_id: studentObj.student.id,
+                    authorType: "teacher"
+                },
+                order: [
+                    ['createdAt', 'DESC']
+                ],
+                limit: 5
+            }).then(function (teacherMessages) {
+
+                var messageObj = {
+                    tutorMessages,
+                    teacherMessages
+                };
+                res.render("studentProfile", studentObj, messageObj);
+
+            })
+        })
+    })
+}
+
+
 
 
 //Add a message to the database for this student

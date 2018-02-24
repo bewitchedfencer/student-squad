@@ -13,7 +13,9 @@
 <div class="card" id="studentCard">
   <header class="card-header">
     <p class="card-header-title">
-      {{studentname}}
+       {{!-- not sure if should be reference this way, or as this.first_name or student.first_name --}}
+      {{first_name}}  {{last_name}}
+      
     </p>
   </header>
   <div class="card-content">
@@ -33,6 +35,7 @@
 <div class="column is-5">
 <h1 class="subtitle">Tutor's Notes</h1>
 
+{{!-- This is being sent as 2 separate properties of an object that can be referenced as tutorMessages and teacherMessages without validatnig if tutor/teacher is true --}}
 {{#each messages}}
  {{!-- If the message is from a tutor --}}
   {{#if tutormessage}}

@@ -6,10 +6,10 @@ var tutorController = require("../controllers/tutor-controller.js");
 
 //REGISTER NEW TUTOR
 
-//
+//GET: Display tutor's home page
 router.get("/tutorView", isLoggedIn, tutorController.tutorHome)
 
-//PATCH ROUTES - Updates the tutor_id field for student with code entered
+//PATCH: Updates the tutor_id field for student with code entered
 router.patch("/addStudent/:studentId", isLoggedIn, tutorController.addStudent);
 
 
