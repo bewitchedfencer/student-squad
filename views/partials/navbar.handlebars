@@ -4,19 +4,19 @@
             User Name
         </p>
         <ul class="menu-list">
-            <p>test</p>
+            {{!-- <p>test</p>
             {{#if teacher}}
                 {{#each classes}}
                 <li data-id={{id}}>{{name}}</li>
                 {{/each}}
             {{/if}}
-            {{!-- each loop for students --}}
+            each loop for students --}}
         
         {{!-- Can these be styled as buttons, if not already. And they need a studentBtn class that can be used for click events --}}
-            {{#if tutor}}
+            {{!-- {{#if tutor}} --}}
                 {{#each students}}
                     <li data-id={{id}}>{{first_name}} {{last_name}}, {{grade}}</li>
-                {{/each}}
+                {{!-- {{/each}} --}}
             {{/if}}
         </ul>
     </aside>

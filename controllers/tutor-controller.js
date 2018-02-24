@@ -19,10 +19,10 @@ exports.tutorHome = function (req, res) {
             students: results
         };
 
-        if (studentObj == null) {
+        // if (studentObj == null) {
 
 
-        } else {
+        // } else {
             var studentIds = [];
 
             (studentObj.students).forEach(function (student) {
@@ -44,7 +44,7 @@ exports.tutorHome = function (req, res) {
                 console.log(unreadMsg.messages[0].text);
                 res.render('tutorView', studentObj, unreadMsg);
             })
-        }
+        // }
         //of the studentObj.students.id and status is tutorUnread, false
     });
 };
@@ -83,15 +83,14 @@ exports.studentProfile = function (req, res) {
             student
         };
 
+            //locate all messages tied to this students
         db.Message.findAll({
             where: {
                 student_id: studentObj.student.id,
-                authorType: "tutor"
             },
             order: [
                 ['createdAt', 'DESC']
-            ],
-            limit: 5
+            ]
         }).then(function (tutorMessages) {
             db.Message.findAll({
                 where: {
@@ -100,8 +99,7 @@ exports.studentProfile = function (req, res) {
                 },
                 order: [
                     ['createdAt', 'DESC']
-                ],
-                limit: 5
+                ]
             }).then(function (teacherMessages) {
 
                 var messageObj = {
