@@ -23,7 +23,9 @@ exports.tutorHome = function (req, res) {
         console.log(studentIds);
 
         db.Message.findAll({ //Retreive all messages from the tutor's assigned students that are unread
-            where: {
+            
+        
+        where: { //This needs to also retreive the student name that the message is about, or update the messages table to store this information
                 StudentId: {
                     [Op.or]: studentIds
                 },
