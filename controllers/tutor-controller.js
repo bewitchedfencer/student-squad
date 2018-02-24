@@ -40,10 +40,12 @@ exports.tutorHome = function (req, res) {
 //add a student to this tutor
 exports.addStudent = function (req, res) {
     var studentCode = req.params.studentId;
+    console.log(studentCode);
     var tutor = req.user;
+    console.log(tutor);
 
     db.Student.update({
-        tutor_id: tutor.id
+        TutorId: tutor.id
     }, {
         where: {
             unique_id: studentCode
