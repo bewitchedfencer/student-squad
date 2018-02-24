@@ -43,8 +43,9 @@ $("#modalClose").on("click", function () {
         
 
 //When tutor clicks Add Student with code entered, :
-$("#addStudent").on("click", function () {
-    var studentCode = $("#studentCode").val().trim().lowercase();
+$("#addStudent").on("click", function (event) {
+    event.preventDefault();
+    var studentCode = $("#studentCode").val().trim()
     $.ajax("/addStudent/" + studentCode, {
         type: "PATCH"
     }).then(function (response) {
