@@ -4,7 +4,7 @@ A web application using the MVC model for a student's academic support team to c
 
 ## Getting Started
 
-Please go to the link for [Tutor Time](https://dashboard.heroku.com/apps/agile-sands-60136) deployed by Heroku. You will need to email a copy of your class information to bewitchedfencer@gmail.com so that the data can be pre-loaded for the teacher side. Allowing for teachers to upload their own files is a future development.
+Please go to the link for [Tutor Time](https://boiling-beyond-23362.herokuapp.com/) deployed by Heroku. You will need to email a copy of your class information to bewitchedfencer@gmail.com so that the data can be pre-loaded for the teacher side. Allowing for teachers to upload their own files is a future development.
 
 ### Prerequisites
 
