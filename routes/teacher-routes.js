@@ -43,3 +43,18 @@ router.patch("/tutorRead/:messageId", teacherController.tutorRead);
 //Messages
 //POST - Create a new teacher message 
 router.post("/studentMessage/:student", teacherController.postToStudent);
+
+
+function isLoggedIn(req, res, next) {
+    
+        
+        if (req.isAuthenticated()) {
+            console.log("logged in!");
+            // console.log(res);
+            return next();
+        }
+        console.log("Not authenticated!")
+        res.redirect('/');
+    };
+    
+    module.exports = router;
