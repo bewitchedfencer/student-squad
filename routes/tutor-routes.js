@@ -22,7 +22,7 @@ router.post("/addMessage/:studentId", isLoggedIn, tutorController.addMessage);
 router.patch("/readMessage/:messageId", isLoggedIn, tutorController.tutorRead);
 
 //PATCH - Update/edit a message from the messages table
-router.patch("/editMessage/:messageId", isLoggedIn, tutorontroller.editMessage);
+router.patch("/editMessage/:messageId", isLoggedIn, tutorController.editMessage);
 
 
 //Get: list of students in each class - w hen user clicks on class, generate dropdown with list
