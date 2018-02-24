@@ -14,18 +14,10 @@ exports.tutorHome = function (req, res) {
             TutorId: tutor.id
         }
     }).then(function (results) {
-        //Check if there are any results, display message if not
-        var studentObj = {
-            students: results
-        };
 
-        // if (studentObj == null) {
-
-
-        // } else {
             var studentIds = [];
-
-            (studentObj.students).forEach(function (student) {
+            
+            (results).forEach(function (student) {
                 studentIds.push(student.id);
             });
             console.log(studentIds);
@@ -38,14 +30,10 @@ exports.tutorHome = function (req, res) {
                     tutor_read: false
                 }
             }).then(function (messages) {
-                var unreadMsg = {
-                    messages
-                };
-                console.log(unreadMsg.messages[0].text);
-                res.render('tutorView', studentObj, unreadMsg);
+
+                res.render('tutorView', {students: results, unreadMsg: messages});
             })
         // }
-        //of the studentObj.students.id and status is tutorUnread, false
     });
 };
 
