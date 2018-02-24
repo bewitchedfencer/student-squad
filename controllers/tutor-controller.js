@@ -66,10 +66,7 @@ exports.studentProfile = function (req, res) {
             id: studentId
         }
     }).then(function (student) {
-        // var studentObj = {
-        //     student
-        // };
-            //locate all messages tied to this students
+
         db.Message.findAll({
             where: {
                 student_id: student.id,
