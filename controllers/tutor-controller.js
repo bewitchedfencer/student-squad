@@ -61,20 +61,15 @@ exports.addStudent = function (req, res) {
 exports.studentProfile = function (req, res) {
     var studentId = req.params.studentId;
     var tutor = req.user
-
     db.Student.findOne({
         where: {
             id: studentId
         }
     }).then(function (student) {
-        var studentObj = {
-            student
-        };
 
-            //locate all messages tied to this students
         db.Message.findAll({
             where: {
-                student_id: studentObj.student.id,
+                student_id: student.id,
             },
             order: [
                 ['createdAt', 'DESC']
@@ -82,7 +77,7 @@ exports.studentProfile = function (req, res) {
         }).then(function (tutorMessages) {
             db.Message.findAll({
                 where: {
-                    student_id: studentObj.student.id,
+                    student_id: student.id,
                     authorType: "teacher"
                 },
                 order: [
@@ -90,11 +85,11 @@ exports.studentProfile = function (req, res) {
                 ]
             }).then(function (teacherMessages) {
 
-                var messageObj = {
-                    tutorMessages,
-                    teacherMessages
-                };
-                res.render("studentProfile", studentObj, messageObj);
+                // var messageObj = {
+                //     tutorMessages,
+                //     teacherMessages
+                // };
+                res.render("studentProfile", {studentObj: student, tutorMsgObj: tutorMessages, teacherMsgObj: teacherMessages});
 
             })
         })
