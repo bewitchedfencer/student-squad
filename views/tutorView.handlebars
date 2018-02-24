@@ -3,7 +3,8 @@
 {{!-- Insert tabs partial --}}
 <div class="column">
 {{> tutortabs}}
-</div>
+
+<div><h1>Unread Messages</h1></div>
 <div class="columns">
 <div class="column is-1"> 
     {{!-- Jeff - add #student Code input and label to accept student-code from tutor --}}
@@ -13,25 +14,25 @@
 {{!-- Jeff - only display a number (1 to 5), message, author, time, and maybe an icon that can be clicked for each message. On click, modal populates with message body. 
 On close, that message is changed to read --}}
 {{#each unreadMsg}}
-    {{!-- {{#if tutor_read}}
-    <div class="column is-two-thirds">
-    <h1 class="title">You're all caught up!</h1>
-</div>
-{{/if}}
-    {{#unless tutor_read}} --}}
+ 
+    
     {{!-- Builds a message element --}}
         <article class="message is-dark {{author}}">
             <div class="message-header">
-                <p>{{StudentId}} {{createdAt}}</p>
+                <div>Student: {{Student.first_name}}  {{Student.last_name}}</div>
+
                 <button class="delete" aria-label="delete"></button>
             </div>
             {{!-- Message text --}}
             <div class="message-body">
+                <p>Message Sent By: {{author}}</p>
+
+                <p> Sent at: {{createdAt}}</p>
                 {{text}}
             </div>
         </article>
 
-    {{!-- {{/unless}} --}}
+    
 {{/each}}
 </div>
 </div>

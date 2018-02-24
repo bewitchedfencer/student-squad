@@ -30,9 +30,12 @@ exports.tutorHome = function (req, res) {
                     [Op.or]: studentIds
                 },
                 tutor_read: false
-            }
+            }, 
+            include: [{// Notice `include` takes an ARRAY
+            model: db.Student
+          }]
         }).then(function (messages) {
-
+            console.log(messages[0]);
             res.render('tutorView', {
                 students: results,
                 unreadMsg: messages
