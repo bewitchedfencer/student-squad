@@ -19,11 +19,10 @@ router.get("/studentProfile/:studentId", isLoggedIn, tutorController.studentProf
 router.post("/addMessage/:studentId", isLoggedIn, tutorController.addMessage);
 
 //GET: Go to Notes page: Get route using handlebars
-router.patch("/readMessage/:messageId", isLoggedIn, tutorController.tutorRead)
-;
+router.patch("/readMessage/:messageId", isLoggedIn, tutorController.tutorRead);
 
 //PATCH - Update/edit a message from the messages table
-
+router.patch("/editMessage/:messageId", isLoggedIn, tutorontroller.editMessage);
 
 
 //Get: list of students in each class - w hen user clicks on class, generate dropdown with list
