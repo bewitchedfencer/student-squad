@@ -9,7 +9,7 @@ exports.teacherHome = function (req, res) {
 //gets class data for the teacher user
     db.Classroom.findAll({
         where: {
-            teacherId: req.TeacherId
+            teacherId:TeacherId
         }
     }).then(function (results) {
         //creating an array to store all of the classes
@@ -21,13 +21,25 @@ exports.teacherHome = function (req, res) {
 
        
         //update with correct handlebars page
-        res.render("teacherView", {navbar:classesForTeacher});
+        res.render("teacherView", {classroom:results});
     });
 
 
 //how are we doing this? How is this getting rendered in handlebars?
 exports.getStudentsInClass = function (req, res) {
-    var classID = 4 //attach to some button in html
+    db.Classroom.findAll({
+        where: {
+            teacherId:TeacherId
+        }
+    }).then(function (results) {
+        //creating an array to store all of the classes
+        var classesForTeacher = [];
+        var allStudents = [];
+        (results).forEach(function(classroom){
+            classesForTeacher.push(classroom.id);
+        });
+        console.log("classes", classesForTeacher);
+for(var i = 0; i<classesForTeacher.length; i++){
     db.Student.findAll({
         include: [{
             model: Classroom,
@@ -35,12 +47,13 @@ exports.getStudentsInClass = function (req, res) {
                 classId: classID
             }
         }]
-    }).then(function (results) {
-        var hdbsObj = {
-            students: results
-        }
+    }).then(function (students) {
+    allStudents.push(students[i]);
+    });
+};
+    
         //check file name is correct
-        res.render("studentDropdown", hdbsObj);
+        res.render("teacherNavbar", {student:students, classroom:results});
     });
 
 exports.postToClasses = function (req, res) {
@@ -186,4 +199,5 @@ exports.teacherRead = function (req, res) {
             redirect.reload();
         });
     };
-}
+};
+};
